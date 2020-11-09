@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloAR.unity
     guid: 8b5735a2d242c4dbface50f022a1c96b
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 62fa06ed862d50e4dbfbb776edac112b, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d07a34f76cf5f8e4c80553b3f2156614, type: 2}
