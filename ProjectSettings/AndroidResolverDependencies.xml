@@ -19,7 +19,7 @@
     <file>Assets/Plugins/Android/com.google.android.gms.play-services-tasks-16.0.1.aar</file>
   </files>
   <settings>
-    <setting name="androidAbis" value="armeabi-v7a" />
+    <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
     <setting name="bundleId" value="com.JosephandWill.ARTowerDefense" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
