@@ -23,7 +23,7 @@ public class GunRotate : MonoBehaviour
         for (int i = 0; i < numColliders; i++)
         {
             float distance = (hitColliders[i].transform.position - transform.position).magnitude;
-            if (distance < closestDistance)
+            if (distance < closestDistance && hitColliders[i].tag == "follow")
             {
                 closestIndex = i;
             }
@@ -31,22 +31,21 @@ public class GunRotate : MonoBehaviour
 
         if (closestIndex > -1)
         {
-            if (hitColliders[closestIndex].tag == "follow")
-            {
-                //Code source: https://answers.unity.com/questions/36255/lookat-to-only-rotate-on-y-axis-how.html
+            //Debug.Log(hitColliders[closestIndex].tag);
+            //Code source: https://answers.unity.com/questions/36255/lookat-to-only-rotate-on-y-axis-how.html
 
-                /*
-                Vector3 targetPosition = new Vector3(hitColliders[closestIndex].transform.position.x, transform.position.y, hitColliders[closestIndex].transform.position.z);
-                this.transform.LookAt(targetPosition);
-                */
-                //The above way works just as well, but it doesn't give the cool lerp effect
+            /*
+            Vector3 targetPosition = new Vector3(hitColliders[closestIndex].transform.position.x, transform.position.y, hitColliders[closestIndex].transform.position.z);
+            this.transform.LookAt(targetPosition);
+            */
+            //The above way works just as well, but it doesn't give the cool lerp effect
+            //Debug.Log("Targeting...");
+            var lookPos = hitColliders[closestIndex].transform.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
 
-                var lookPos = hitColliders[closestIndex].transform.position - transform.position;
-                lookPos.y = 0;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
-
-            }
+            hitColliders[closestIndex].gameObject.GetComponent<EnemyBehavior>().Damage();
         }
 
     }
