@@ -46,6 +46,10 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         public InstantPlacementMenu InstantPlacementMenu;
 
+        public GameObject ObjectsMenu;
+
+        public DetectedPlaneGenerator PlaneGenerator;
+
         /// <summary>
         /// A prefab to place when an instant placement raycast from a user touch hits an instant
         /// placement point.
@@ -84,6 +88,10 @@ namespace GoogleARCore.Examples.HelloAR
         /// </summary>
         private bool _isQuitting = false;
 
+        private bool _planeFound = false;
+
+        private DetectedPlane _usablePlane;
+
         /// <summary>
         /// The Unity Awake() method.
         /// </summary>
@@ -117,12 +125,12 @@ namespace GoogleARCore.Examples.HelloAR
             // Raycast against the location the player touched to search for planes.
             TrackableHit hit;
             bool foundHit = false;
-            if (InstantPlacementMenu.IsInstantPlacementEnabled())
-            {
-                foundHit = Frame.RaycastInstantPlacement(
-                    touch.position.x, touch.position.y, 1.0f, out hit);
-            }
-            else
+            //if (InstantPlacementMenu.IsInstantPlacementEnabled())
+            //{
+            //    foundHit = Frame.RaycastInstantPlacement(
+            //        touch.position.x, touch.position.y, 1.0f, out hit);
+            //}
+            //else
             {
                 TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
                     TrackableHitFlags.FeaturePointWithSurfaceNormal;
@@ -130,7 +138,9 @@ namespace GoogleARCore.Examples.HelloAR
                     touch.position.x, touch.position.y, raycastFilter, out hit);
             }
 
-            if (foundHit)
+            
+
+            if (foundHit && _planeFound)
             {
                 // Use hit pose and camera pose to check if hittest is from the
                 // back of the plane, if it is, no need to create the anchor.
@@ -158,7 +168,8 @@ namespace GoogleARCore.Examples.HelloAR
                     {
                         prefab = GameObjectPointPrefab;
                     }
-                    else if (hit.Trackable is DetectedPlane)
+                    else
+                    if (hit.Trackable is DetectedPlane plane && plane == _usablePlane)
                     {
                         DetectedPlane detectedPlane = hit.Trackable as DetectedPlane;
                         if (detectedPlane.PlaneType == DetectedPlaneType.Vertical)
@@ -172,7 +183,7 @@ namespace GoogleARCore.Examples.HelloAR
                     }
                     else
                     {
-                        prefab = GameObjectHorizontalPlanePrefab;
+                        prefab = null;
                     }
 
                     // Instantiate prefab at the hit pose.
@@ -195,6 +206,24 @@ namespace GoogleARCore.Examples.HelloAR
                         gameObject.GetComponentInChildren<InstantPlacementEffect>()
                             .InitializeWithTrackable(hit.Trackable);
                     }
+                }
+            }
+
+            if (foundHit && !_planeFound)
+            {
+                if (hit.Trackable is DetectedPlane plane)
+                {
+                    _usablePlane = plane;
+                    _planeFound = true;
+                    PlaneGenerator.gameObject.SetActive(false);
+                    GameObject planeObject = Instantiate(PlaneGenerator.DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
+                    planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(_usablePlane);
+                    planeObject.GetComponent<DetectedPlaneVisualizer>().ChangeColor(Color.green);
+                    ObjectsMenu.SetActive(true);
+                    //foreach (GameObject p in PlaneGenerator.planeObjs)
+                    //{
+                    //   Destroy(p);
+                    //}
                 }
             }
         }

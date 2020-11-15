@@ -91,6 +91,11 @@ namespace GoogleARCore.Examples.Common
             Update();
         }
 
+        public void ChangeColor(Color color)
+        {
+            _meshRenderer.material.SetColor("_GridColor", color);
+        }
+
         /// <summary>
         /// Update mesh with a list of Vector3 and plane's center position.
         /// </summary>
