@@ -7,11 +7,21 @@ public class EnemyBehavior : MonoBehaviour
 
     public int health = 100;
 
-    public float speed = 0.1f;
+    public float speed = 2f;
 
     private bool inObjectiveRange = false;
 
     private ObjectiveBehavior objective;
+
+    public List<Collider> waypoints;
+
+    public int currentIndex = 0;
+
+    private void Start()
+    {
+        Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
+        transform.LookAt(targetPosition);
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -24,9 +34,15 @@ public class EnemyBehavior : MonoBehaviour
         
         if (!inObjectiveRange)
         {
-            //TEMP GET RID OF THIS
-            transform.position += new Vector3(0, 0, speed);
-            //PUT ACTUAL LOGIC FOR FOLLOWING PATHS HERE
+            if (waypoints[currentIndex] != null && waypoints.Count > 0)
+            {
+                Vector3 direction = Vector3.Normalize(waypoints[currentIndex].transform.position - transform.position);
+                transform.position += direction * speed;
+            }
+            else
+            {
+                Debug.LogError("Ay bruh there ain't no goddamn waypoint to go to");
+            }
         } else
         {
             objective.Damage();
@@ -49,5 +65,16 @@ public class EnemyBehavior : MonoBehaviour
 
         Vector3 targetPosition = new Vector3(objective.transform.position.x, objective.transform.position.y, objective.transform.position.z);
         transform.LookAt(targetPosition);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Colliding");
+        if (other == waypoints[currentIndex])
+        {
+            currentIndex++;
+            Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
+            transform.LookAt(targetPosition);
+        }
     }
 }
