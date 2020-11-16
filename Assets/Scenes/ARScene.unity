@@ -5150,10 +5150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   structures:
   - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
-  - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
-  - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
-  - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
-  - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
+  - {fileID: 11400000, guid: 730cf7c794fd146439a856b8e1d1eb3d, type: 2}
+  - {fileID: 11400000, guid: 81206963c9884c14bbf739750b2cd31d, type: 2}
   buttonPrefab: {fileID: 8435981419899211649, guid: b11bb8c0a2f1e9940816736fab0c8759, type: 3}
   contentWindow: {fileID: 810441748}
 --- !u!1 &1902128480

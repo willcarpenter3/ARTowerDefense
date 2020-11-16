@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7541f22bc1f37f4db6304f572052865, type: 3}
-  m_Name: Tower
+  m_Name: Enemy
   m_EditorClassIdentifier: 
-  structureName: Tower
-  prefab: {fileID: 8297330278252570736, guid: 2074f851109fa7548850ed799596cc9c, type: 3}
-  image: {fileID: 21300000, guid: 78d88a3cfb1ef65409f235225f8884ef, type: 3}
+  structureName: Enemy
+  prefab: {fileID: 4664787636617481295, guid: 552aea72287a4144eae2d6a84f8c19cc, type: 3}
+  image: {fileID: 21300000, guid: 8df1980a8c94446469d69fdcd165035d, type: 3}

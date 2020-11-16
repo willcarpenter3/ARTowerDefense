@@ -27,4 +27,9 @@ public class ObjectMenu : MonoBehaviour
     {
         selectedStructure = structure;
     }
+
+    public GameObject GetSelectedStructure()
+    {
+        return selectedStructure;
+    }
 }

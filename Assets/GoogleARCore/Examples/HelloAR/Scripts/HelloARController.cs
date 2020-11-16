@@ -178,7 +178,7 @@ namespace GoogleARCore.Examples.HelloAR
                         }
                         else
                         {
-                            prefab = GameObjectHorizontalPlanePrefab;
+                            prefab = ObjectsMenu.GetComponent<ObjectMenu>().GetSelectedStructure();
                         }
                     }
                     else

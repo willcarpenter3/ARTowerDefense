@@ -7,6 +7,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public int health = 100;
 
+    public float speed = 0.1f;
+
     private bool inObjectiveRange = false;
 
     private ObjectiveBehavior objective;
@@ -23,7 +25,7 @@ public class EnemyBehavior : MonoBehaviour
         if (!inObjectiveRange)
         {
             //TEMP GET RID OF THIS
-            transform.position += new Vector3(0, 0, 0.3f);
+            transform.position += new Vector3(0, 0, speed);
             //PUT ACTUAL LOGIC FOR FOLLOWING PATHS HERE
         } else
         {
