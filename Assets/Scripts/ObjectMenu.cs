@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class ObjectMenu : MonoBehaviour
 {
-    public List<Structure> structures = new List<Structure>();
+    public List<Structure> placingStructures = new List<Structure>();
+    public List<Structure> pathingStructures = new List<Structure>();
+    public List<Structure> playingStructures = new List<Structure>();
     public GameObject buttonPrefab;
     public GameObject contentWindow;
 
@@ -13,7 +15,17 @@ public class ObjectMenu : MonoBehaviour
 
     public void Awake()
     {
-        foreach(Structure obj in structures)
+        
+    }
+
+    public void ChangeMenu(List<Structure> structures)
+    {
+        foreach (Transform child in contentWindow.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Structure obj in structures)
         {
             GameObject button = Instantiate(buttonPrefab, contentWindow.transform);
             button.GetComponent<Image>().sprite = obj.image;

@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     public TMP_Text phaseDesc;
 
+    public ObjectMenu structureMenu;
+
     public static GameManager instance;
 
     public static GameManager Instance()
@@ -90,14 +92,17 @@ public class GameManager : MonoBehaviour
         {
             case Phase.PlaneSelection:
                 gamePhase = Phase.Placing;
+                structureMenu.ChangeMenu(structureMenu.placingStructures);
                 phaseDesc.text = "Place the objective, enemy spawners, and defense towers";
                 break;
             case Phase.Placing:
                 gamePhase = Phase.Pathing;
+                structureMenu.ChangeMenu(structureMenu.pathingStructures);
                 phaseDesc.text = "Place waypoints for the path of the designated spawner's enemies";
                 break;
             case Phase.Pathing:
                 gamePhase = Phase.Playing;
+                structureMenu.ChangeMenu(structureMenu.playingStructures);
                 phaseDesc.text = "Will the enemies get defeated before they destroy the objective?";
                 break;
             default:
