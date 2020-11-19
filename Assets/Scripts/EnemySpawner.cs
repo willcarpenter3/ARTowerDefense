@@ -17,12 +17,16 @@ public class EnemySpawner : MonoBehaviour
 
     bool started = false;
 
+    bool empty = false;
+
     // Update is called once per frame
     void Update()
     {
-        if (numEnemies <= 0)
+        if (numEnemies <= 0 && !empty)
         {
             CancelInvoke();
+            empty = true;
+            GameManager.Instance().checkWin();
         }
 
         //Code inspired by this snarky jackass
@@ -30,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
         if (!started && GameManager.Instance().getGamePhase() == Phase.Playing)
         {
             InvokeRepeating("SpawnEnemy", startDelay, delay);
-            GameManager.Instance().debug.text = waypoints.Count.ToString();
+            //GameManager.Instance().debug.text = waypoints.Count.ToString();
             started = true;
         }
 

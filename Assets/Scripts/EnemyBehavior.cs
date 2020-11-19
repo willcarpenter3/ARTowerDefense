@@ -28,6 +28,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameManager.Instance().Invoke("checkWin", 0.1f);
             Destroy(gameObject);
         }
 
