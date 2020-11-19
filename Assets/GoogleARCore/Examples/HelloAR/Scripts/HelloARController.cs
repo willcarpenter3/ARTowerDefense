@@ -224,6 +224,7 @@ namespace GoogleARCore.Examples.HelloAR
             {
                 if (hit.Trackable is DetectedPlane plane)
                 {
+                    GameManager.Instance().nextPhase();
                     _usablePlane = plane;
                     _planeFound = true;
                     PlaneGenerator.gameObject.SetActive(false);

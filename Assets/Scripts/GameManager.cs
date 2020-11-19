@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public enum Phase { Placing, Pathing, Playing };
+public enum Phase { PlaneSelection, Placing, Pathing, Playing };
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
 
     public GameObject losePanel;
+
+    public TMP_Text phaseDesc;
 
     public static GameManager instance;
 
@@ -85,14 +88,21 @@ public class GameManager : MonoBehaviour
     {
         switch(gamePhase)
         {
+            case Phase.PlaneSelection:
+                gamePhase = Phase.Placing;
+                phaseDesc.text = "Place the objective, enemy spawners, and defense towers";
+                break;
             case Phase.Placing:
                 gamePhase = Phase.Pathing;
+                phaseDesc.text = "Place waypoints for the path of the designated spawner's enemies";
                 break;
             case Phase.Pathing:
                 gamePhase = Phase.Playing;
+                phaseDesc.text = "Will the enemies get defeated before they destroy the objective?";
                 break;
             default:
-                gamePhase = Phase.Placing;
+                gamePhase = Phase.PlaneSelection;
+                phaseDesc.text = "Select the plane you want to play on";
                 break;
         }
     }
