@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     public int spawnerIndex = 0;
 
+    public GameObject winPanel;
+
+    public GameObject losePanel;
+
     public static GameManager instance;
 
     public static GameManager Instance()
@@ -33,12 +37,42 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+        //debug.text = "Num enemies: " + FindObjectsOfType<EnemyBehavior>().Length;
+    }
+
+    public void gameLoss()
+    {
+        losePanel.SetActive(true);
+    }
+
+    public void gameWin()
+    {
+        winPanel.SetActive(true);
+    }
+
+    public void checkWin()
+    {
+        foreach (EnemySpawner spawn in spawners)
+        {
+            if (spawn.numEnemies > 0)
+            {
+                return;
+            }
+        }
+
+        if (FindObjectsOfType<EnemyBehavior>().Length > 0)
+        {
+            return;
+        }
+
+        gameWin();
     }
 
     public void addSpawner(EnemySpawner e)
     {
         spawners.Add(e);
-        debug.text = "Added spawner!";
+        //debug.text = "Added spawner!";
         
     }
 
