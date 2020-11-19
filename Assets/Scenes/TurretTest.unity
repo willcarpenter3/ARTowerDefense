@@ -307,8 +307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d647513dafa67e48b3e0c1b277a14c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: {fileID: 0}
   gamePhase: 0
   spawners: []
+  spawnerIndex: 0
 --- !u!4 &367081463
 Transform:
   m_ObjectHideFlags: 0
