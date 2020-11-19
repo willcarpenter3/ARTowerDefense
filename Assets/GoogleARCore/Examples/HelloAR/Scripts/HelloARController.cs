@@ -189,6 +189,17 @@ namespace GoogleARCore.Examples.HelloAR
                     // Instantiate prefab at the hit pose.
                     var gameObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation);
 
+                    if (GameManager.Instance().getGamePhase() == Phase.Placing && gameObject.GetComponent<EnemySpawner>() != null)
+                    {
+                        GameManager.Instance().addSpawner(gameObject.GetComponent<EnemySpawner>());
+                    }
+
+                    if (GameManager.Instance().getGamePhase() == Phase.Pathing && gameObject.tag == "waypoint")
+                    {
+                        GameManager.Instance().spawners[GameManager.Instance().spawnerIndex].addWaypoint(gameObject.GetComponent<Collider>());
+                        GameManager.Instance().debug.text = "Added Waypoint";
+                    }
+
                     // Compensate for the hitPose rotation facing away from the raycast (i.e.
                     // camera).
                     gameObject.transform.Rotate(0, _prefabRotation, 0, Space.Self);

@@ -30,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
         if (!started && GameManager.Instance().getGamePhase() == Phase.Playing)
         {
             InvokeRepeating("SpawnEnemy", startDelay, delay);
+            GameManager.Instance().debug.text = waypoints.Count.ToString();
             started = true;
         }
 

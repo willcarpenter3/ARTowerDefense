@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a19a72a1fb7204c9ff3ede0ec431fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
+  radius: 0.25
   rotationSpeed: 2
 --- !u!1 &7191369691670420531
 GameObject:

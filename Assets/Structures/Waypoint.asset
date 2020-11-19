@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Waypoint
   m_EditorClassIdentifier: 
   structureName: Waypoint
-  prefab: {fileID: 0}
-  image: {fileID: 0}
+  prefab: {fileID: 8053867445950614324, guid: 1bf9566950602e040be6d7ce5e66e52a, type: 3}
+  image: {fileID: 21300000, guid: 3d4ff0c18a5e3754c8862a3243bea629, type: 3}

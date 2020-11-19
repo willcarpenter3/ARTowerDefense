@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Phase { Placing, Pathing, Playing };
 
 public class GameManager : MonoBehaviour
 {
+
+    public Text debug;
 
     public Phase gamePhase = Phase.Placing;
 
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
     public void addSpawner(EnemySpawner e)
     {
         spawners.Add(e);
-        Debug.Log("Added spawner!");
+        debug.text = "Added spawner!";
         
     }
 
