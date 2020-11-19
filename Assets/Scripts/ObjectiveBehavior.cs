@@ -12,6 +12,7 @@ public class ObjectiveBehavior : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameManager.Instance().gameLoss();
             Destroy(gameObject);
         }
     }
