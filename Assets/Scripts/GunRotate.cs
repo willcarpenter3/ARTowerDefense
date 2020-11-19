@@ -14,7 +14,7 @@ public class GunRotate : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.GetComponent<LineRenderer>().SetPosition(0, transform.position);
+        gameObject.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y + .05f, transform.position.z));
         gameObject.GetComponent<LineRenderer>().enabled = false;
     }
 
