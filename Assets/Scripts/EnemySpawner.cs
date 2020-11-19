@@ -40,12 +40,12 @@ public class EnemySpawner : MonoBehaviour
 
 
         //TODO get rid of this, it's for testing purposes only
-        if (Input.GetKeyUp(KeyCode.Space) && (GameManager.Instance().getGamePhase() == Phase.Placing))
+        if (Input.GetKeyUp(KeyCode.Space) && (GameManager.Instance().getGamePhase() == Phase.PlaneSelection))
         {
             GameManager.Instance().addSpawner(this);
             GameManager.Instance().nextPhase();
             GameManager.Instance().nextPhase();
-            GameManager.Instance().nextSpawner();
+            GameManager.Instance().nextPhase();
         }
     }
 
