@@ -4186,6 +4186,7 @@ MonoBehaviour:
   winPanel: {fileID: 801352918}
   losePanel: {fileID: 304421445}
   phaseDesc: {fileID: 1589410277}
+  structureMenu: {fileID: 1879866758}
 --- !u!4 &1362799555
 Transform:
   m_ObjectHideFlags: 0
@@ -4335,6 +4336,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1248447649449928, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4461716624848968, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4366,6 +4371,14 @@ PrefabInstance:
     - target: {fileID: 4461716624848968, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 108886784190946772, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
+      propertyPath: m_Intensity
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 108886784190946772, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
@@ -6136,11 +6149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a55729f41978d438408641105240ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  structures:
-  - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
+  placingStructures:
   - {fileID: 11400000, guid: 730cf7c794fd146439a856b8e1d1eb3d, type: 2}
+  - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
   - {fileID: 11400000, guid: f329fa9e949a7984ebec77843b3422e1, type: 2}
+  pathingStructures:
   - {fileID: 11400000, guid: 6d69608a21145764c9a1584313da85f2, type: 2}
+  playingStructures:
+  - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
   buttonPrefab: {fileID: 8435981419899211649, guid: b11bb8c0a2f1e9940816736fab0c8759, type: 3}
   contentWindow: {fileID: 810441748}
 --- !u!1 &1902128480

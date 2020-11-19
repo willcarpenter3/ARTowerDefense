@@ -12,6 +12,12 @@ public class GunRotate : MonoBehaviour
     public float radius = 10f;
     public float rotationSpeed = 2f;
 
+    private void Awake()
+    {
+        gameObject.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y + .05f, transform.position.z));
+        gameObject.GetComponent<LineRenderer>().enabled = false;
+    }
+
     void FixedUpdate()
     {
         //Code source: https://docs.unity3d.com/ScriptReference/Physics.OverlapSphereNonAlloc.html
@@ -45,7 +51,13 @@ public class GunRotate : MonoBehaviour
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
 
+            gameObject.GetComponent<LineRenderer>().enabled = true;
+            gameObject.GetComponent<LineRenderer>().SetPosition(1, hitColliders[closestIndex].transform.position);
             hitColliders[closestIndex].gameObject.GetComponent<EnemyBehavior>().Damage();
+        }
+        else
+        {
+            gameObject.GetComponent<LineRenderer>().enabled = false;
         }
 
     }
