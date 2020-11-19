@@ -15,13 +15,7 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject enemyPrefab;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Code inspired by this snarky jackass
-        //src: https://answers.unity.com/questions/314815/delay-a-prefab-instantiate.html
-        InvokeRepeating("SpawnEnemy", startDelay, delay);
-    }
+    bool started = false;
 
     // Update is called once per frame
     void Update()
@@ -29,6 +23,24 @@ public class EnemySpawner : MonoBehaviour
         if (numEnemies <= 0)
         {
             CancelInvoke();
+        }
+
+        //Code inspired by this snarky jackass
+        //src: https://answers.unity.com/questions/314815/delay-a-prefab-instantiate.html
+        if (!started && GameManager.Instance().getGamePhase() == Phase.Playing)
+        {
+            InvokeRepeating("SpawnEnemy", startDelay, delay);
+            started = true;
+        }
+
+
+        //TODO get rid of this, it's for testing purposes only
+        if (Input.GetKeyUp(KeyCode.Space) && (GameManager.Instance().getGamePhase() == Phase.Placing))
+        {
+            GameManager.Instance().addSpawner(this);
+            GameManager.Instance().nextPhase();
+            GameManager.Instance().nextPhase();
+            GameManager.Instance().nextSpawner();
         }
     }
 
@@ -38,5 +50,10 @@ public class EnemySpawner : MonoBehaviour
         GameObject instance = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         instance.GetComponent<EnemyBehavior>().waypoints = waypoints;
         numEnemies--;
+    }
+
+    public void addWaypoint(Collider c)
+    {
+        waypoints.Add(c);
     }
 }
