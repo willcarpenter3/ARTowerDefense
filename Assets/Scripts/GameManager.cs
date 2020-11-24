@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
 
     public ObjectMenu structureMenu;
 
+    public GameObject selectedEffect;
+
+    private GameObject currentSelectedEffect;
+
     public static GameManager instance;
 
     public static GameManager Instance()
@@ -99,11 +103,13 @@ public class GameManager : MonoBehaviour
                 gamePhase = Phase.Pathing;
                 structureMenu.ChangeMenu(structureMenu.pathingStructures);
                 phaseDesc.text = "Place waypoints for the path of the designated spawner's enemies";
+                addSelectedEffect();
                 break;
             case Phase.Pathing:
                 gamePhase = Phase.Playing;
                 structureMenu.ChangeMenu(structureMenu.playingStructures);
                 phaseDesc.text = "Will the enemies get defeated before they destroy the objective?";
+                removeSelectedEffect();
                 break;
             default:
                 gamePhase = Phase.PlaneSelection;
@@ -115,5 +121,18 @@ public class GameManager : MonoBehaviour
     public void nextSpawner()
     {
         spawnerIndex++;
+        removeSelectedEffect();
+        addSelectedEffect();
+    }
+
+    private void addSelectedEffect()
+    {
+        currentSelectedEffect = Instantiate(selectedEffect, spawners[spawnerIndex].gameObject.transform);
+    }
+
+    private void removeSelectedEffect()
+    {
+        Destroy(currentSelectedEffect);
+        currentSelectedEffect = null;
     }
 }
