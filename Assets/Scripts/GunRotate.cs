@@ -11,11 +11,14 @@ public class GunRotate : MonoBehaviour
 {
     public float radius = 10f;
     public float rotationSpeed = 2f;
+    public ParticleSystem radiusParticle;
 
     private void Awake()
     {
         gameObject.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y + .05f, transform.position.z));
         gameObject.GetComponent<LineRenderer>().enabled = false;
+        var main = radiusParticle.main;
+        main.startSize = radius * 2;
     }
 
     void FixedUpdate()
