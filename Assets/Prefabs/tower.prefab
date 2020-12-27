@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6230588600860965036}
   - component: {fileID: 5896488124479403978}
   - component: {fileID: 9216440975735778371}
+  - component: {fileID: 7996313773539550494}
   - component: {fileID: 3874412221548634500}
   m_Layer: 0
   m_Name: Gun
@@ -95,9 +96,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a19a72a1fb7204c9ff3ede0ec431fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.1
+  towerAttack: {fileID: 7996313773539550494}
   rotationSpeed: 2
+--- !u!114 &7996313773539550494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235532563644325568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9427582f59413ac40a85f75044ed6d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.3
+  fireDelay: 1
+  damage: 10
+  laserSpawn: {fileID: 861457276636138448}
   radiusParticle: {fileID: 8106920101297396289}
+  laserPrefab: {fileID: 1173424976658330268, guid: 5dfc1d59eae6c98499d1b27241b1e315, type: 3}
 --- !u!120 &3874412221548634500
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -196,6 +214,36 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &861457276636138448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3285203968907884935}
+  m_Layer: 0
+  m_Name: LaserSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3285203968907884935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861457276636138448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0879, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8677830933730439882}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7191369691670420531
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +337,7 @@ GameObject:
   - component: {fileID: 8106920101297396289}
   - component: {fileID: 8106920101297396288}
   m_Layer: 0
-  m_Name: Particle-Selected
+  m_Name: RadiusParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5128,6 +5176,7 @@ Transform:
   - {fileID: 189661571594487702}
   - {fileID: 8999651224688385666}
   - {fileID: 8106920101297396350}
+  - {fileID: 3285203968907884935}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

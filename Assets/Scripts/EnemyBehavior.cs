@@ -62,6 +62,11 @@ public class EnemyBehavior : MonoBehaviour
         health--;
     }
 
+    public void Damage(int hit)
+    {
+        health -= hit;
+    }
+
     public void EnterObjectiveRange(ObjectiveBehavior newObjective)
     {
         Debug.Log("entered objective range");
@@ -76,12 +81,19 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Colliding");
-        if (other == waypoints[currentIndex])
+        //Debug.Log("Colliding");
+        if (waypoints.Count > 0)
         {
-            currentIndex++;
-            Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
-            transform.LookAt(targetPosition);
+            if (other == waypoints[currentIndex])
+            {
+                currentIndex++;
+                Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
+                transform.LookAt(targetPosition);
+            }
+        }
+        if (other.gameObject.GetComponent<Bolt>() != null)
+        {
+            Destroy(other.gameObject);
         }
     }
 }
