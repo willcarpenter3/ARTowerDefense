@@ -19,8 +19,11 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Start()
     {
-        Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
-        transform.LookAt(targetPosition);
+        if (waypoints.Count > 0)
+        {
+            Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
+            transform.LookAt(targetPosition);
+        }
     }
 
     // Update is called once per frame
@@ -28,22 +31,25 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (health <= 0)
         {
-            GameManager.Instance().Invoke("checkWin", 0.1f);
+            if (GameManager.Instance() != null)
+            {
+                GameManager.Instance().Invoke("checkWin", 0.1f);
+            }
             Destroy(gameObject);
         }
 
         
         if (!inObjectiveRange)
         {
-            if (waypoints[currentIndex] != null && waypoints.Count > 0)
+            if (waypoints.Count > 0 && waypoints[currentIndex] != null)
             {
                 Vector3 direction = Vector3.Normalize(waypoints[currentIndex].transform.position - transform.position);
                 transform.position += direction * speed;
             }
-            else
-            {
-                Debug.LogError("Ay bruh there ain't no goddamn waypoint to go to");
-            }
+            //else
+            //{
+            //    Debug.LogError("Ay bruh there ain't no goddamn waypoint to go to");
+            //}
         } else
         {
             objective.Damage();
@@ -54,6 +60,11 @@ public class EnemyBehavior : MonoBehaviour
     public void Damage()
     {
         health--;
+    }
+
+    public void Damage(int hit)
+    {
+        health -= hit;
     }
 
     public void EnterObjectiveRange(ObjectiveBehavior newObjective)
@@ -70,12 +81,19 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Colliding");
-        if (other == waypoints[currentIndex])
+        //Debug.Log("Colliding");
+        if (waypoints.Count > 0)
         {
-            currentIndex++;
-            Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
-            transform.LookAt(targetPosition);
+            if (other == waypoints[currentIndex])
+            {
+                currentIndex++;
+                Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
+                transform.LookAt(targetPosition);
+            }
+        }
+        if (other.gameObject.GetComponent<Bolt>() != null)
+        {
+            Destroy(other.gameObject);
         }
     }
 }

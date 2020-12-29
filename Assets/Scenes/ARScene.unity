@@ -2591,7 +2591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000064035885, y: 0}
+  m_AnchoredPosition: {x: 0.000028145192, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &810441750
@@ -4187,6 +4187,7 @@ MonoBehaviour:
   losePanel: {fileID: 304421445}
   phaseDesc: {fileID: 1589410277}
   structureMenu: {fileID: 1879866758}
+  selectedEffect: {fileID: 4623712475414548718, guid: 1ee317b56d885a14ca67ce57e6a98bd4, type: 3}
 --- !u!4 &1362799555
 Transform:
   m_ObjectHideFlags: 0

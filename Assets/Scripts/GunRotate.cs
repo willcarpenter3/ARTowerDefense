@@ -9,33 +9,17 @@ using UnityEngine;
 /// </summary>
 public class GunRotate : MonoBehaviour
 {
-    public float radius = 10f;
+    public TowerAttack towerAttack;
     public float rotationSpeed = 2f;
 
     private void Awake()
     {
-        gameObject.GetComponent<LineRenderer>().SetPosition(0, new Vector3(transform.position.x, transform.position.y + .05f, transform.position.z));
-        gameObject.GetComponent<LineRenderer>().enabled = false;
+
     }
 
     void FixedUpdate()
     {
-        //Code source: https://docs.unity3d.com/ScriptReference/Physics.OverlapSphereNonAlloc.html
-        int maxColliders = 10;
-        Collider[] hitColliders = new Collider[maxColliders];
-        int numColliders = Physics.OverlapSphereNonAlloc(transform.position, radius, hitColliders);
-        float closestDistance = radius;
-        int closestIndex = -1;
-        for (int i = 0; i < numColliders; i++)
-        {
-            float distance = (hitColliders[i].transform.position - transform.position).magnitude;
-            if (distance < closestDistance && hitColliders[i].tag == "follow")
-            {
-                closestIndex = i;
-            }
-        }
-
-        if (closestIndex > -1)
+        if (towerAttack.getTargetEnemy() != null)
         {
             //Debug.Log(hitColliders[closestIndex].tag);
             //Code source: https://answers.unity.com/questions/36255/lookat-to-only-rotate-on-y-axis-how.html
@@ -46,18 +30,10 @@ public class GunRotate : MonoBehaviour
             */
             //The above way works just as well, but it doesn't give the cool lerp effect
             //Debug.Log("Targeting...");
-            var lookPos = hitColliders[closestIndex].transform.position - transform.position;
+            var lookPos = towerAttack.getTargetEnemy().transform.position - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
-
-            gameObject.GetComponent<LineRenderer>().enabled = true;
-            gameObject.GetComponent<LineRenderer>().SetPosition(1, hitColliders[closestIndex].transform.position);
-            hitColliders[closestIndex].gameObject.GetComponent<EnemyBehavior>().Damage();
-        }
-        else
-        {
-            gameObject.GetComponent<LineRenderer>().enabled = false;
         }
 
     }
