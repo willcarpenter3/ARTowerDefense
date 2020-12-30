@@ -7,7 +7,7 @@ public class TowerAttack : MonoBehaviour
 {
     public TowerType towerType;
 
-    [Header("Standard Settings")]
+    [Header("Common Settings")]
     public float radius = 10f;
     public float fireDelay = 1f;
     public int damage = 10;
@@ -16,10 +16,15 @@ public class TowerAttack : MonoBehaviour
     public ParticleSystem radiusParticle;
     public GameObject laserSpawn;
     public GameObject laserPrefab;
+    public ParticleSystem shockParticle;
 
     [Header("Tank Settings")]
     public float aoeRadius = 10f;
     public int aoeDamage = 5;
+
+    [Header("Shock Settings")]
+    public float shockTime = 2f;
+    public float shockSpeed = 0f;
 
 
     private GameObject targetEnemy;
@@ -35,19 +40,19 @@ public class TowerAttack : MonoBehaviour
     public enum TowerType
     {
         Standard,
-        Scout,
         Tank,
         Sniper,
         Electric
     }
 
 
-
-
     private void Awake()
     {
         var main = radiusParticle.main;
         main.startSize = radius * 2;
+
+        var shockMain = shockParticle.main;
+        shockMain.startSize = radius * 2;
     }
 
     // Update is called once per frame
@@ -70,13 +75,15 @@ public class TowerAttack : MonoBehaviour
                 if (distance < shortestDistance && hitColliders[i].tag == "follow")
                 {
                     targetIndex = i;
+                    shortestDistance = distance;
                 }
             }
-            else
+            else if (towerType == TowerType.Sniper)
             {
                 if (distance > longestDistance && hitColliders[i].tag == "follow")
                 {
                     targetIndex = i;
+                    longestDistance = distance;
                 }
             }
         }
@@ -85,6 +92,14 @@ public class TowerAttack : MonoBehaviour
         if (targetIndex > -1)
         {
             targetEnemy = hitColliders[targetIndex].gameObject;
+            if (!attacking)
+            {
+                attacking = true;
+                StartCoroutine(TimedAttack());
+            }
+        }
+        else if (towerType == TowerType.Electric)
+        {
             if (!attacking)
             {
                 attacking = true;
@@ -100,13 +115,14 @@ public class TowerAttack : MonoBehaviour
 
     public void Attack()
     {
-        // Spawn a laser that gets sent towards the target
-        targetRotation = targetEnemy.transform.position - transform.position;
-        Instantiate(laserPrefab, laserSpawn.transform.position, Quaternion.LookRotation(targetRotation, Vector3.up));
-
-        // Deal damage
+        // Deal damage if there's an enemy
         if (targetEnemy != null)
         {
+            // Spawn a laser that gets sent towards the target
+            targetRotation = targetEnemy.transform.position - transform.position;
+            Instantiate(laserPrefab, laserSpawn.transform.position, Quaternion.LookRotation(targetRotation, Vector3.up));
+
+            // Deal area of effect damage
             if (towerType == TowerType.Tank)
             {
                 Array.Clear(aoeColliders, 0, aoeColliders.Length);
@@ -120,7 +136,22 @@ public class TowerAttack : MonoBehaviour
                 }
             }
 
+            // Damage target enemy
             targetEnemy.GetComponent<EnemyBehavior>().Damage(damage);
+        }
+
+        // Electric tower functionality
+        if (towerType == TowerType.Electric)
+        {
+            shockParticle.Play();
+            foreach (Collider enemy in hitColliders)
+            {
+                if (enemy != null && enemy.tag == "follow")
+                {
+                    enemy.gameObject.GetComponent<EnemyBehavior>().Shock(shockSpeed, shockTime);
+                    enemy.gameObject.GetComponent<EnemyBehavior>().Damage(damage);
+                }
+            }
         }
     }
 
@@ -131,7 +162,7 @@ public class TowerAttack : MonoBehaviour
 
     private IEnumerator TimedAttack()
     {
-        while (targetEnemy != null)
+        while (targetEnemy != null || towerType == TowerType.Electric)
         {
             Attack();
             WaitForSeconds wait = new WaitForSeconds(fireDelay);

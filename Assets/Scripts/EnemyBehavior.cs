@@ -17,8 +17,12 @@ public class EnemyBehavior : MonoBehaviour
 
     public int currentIndex = 0;
 
+    private float currentSpeed;
+
     private void Start()
     {
+        currentSpeed = speed;
+
         if (waypoints.Count > 0)
         {
             Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
@@ -44,7 +48,7 @@ public class EnemyBehavior : MonoBehaviour
             if (waypoints.Count > 0 && waypoints[currentIndex] != null)
             {
                 Vector3 direction = Vector3.Normalize(waypoints[currentIndex].transform.position - transform.position);
-                transform.position += direction * speed;
+                transform.position += direction * currentSpeed;
             }
             //else
             //{
@@ -95,5 +99,18 @@ public class EnemyBehavior : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+    }
+
+    public void Shock(float newSpeed, float shockTime)
+    {
+        currentSpeed = newSpeed;
+        Unshock(shockTime);
+
+    }
+
+    IEnumerator Unshock(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        currentSpeed = speed;
     }
 }
