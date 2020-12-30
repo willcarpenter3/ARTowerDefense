@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7541f22bc1f37f4db6304f572052865, type: 3}
-  m_Name: Tower
+  m_Name: S_Droideka
   m_EditorClassIdentifier: 
-  structureName: Tower
-  prefab: {fileID: 8297330278252570736, guid: 2074f851109fa7548850ed799596cc9c, type: 3}
-  image: {fileID: 21300000, guid: 78d88a3cfb1ef65409f235225f8884ef, type: 3}
+  structureName: Droideka Spawner
+  prefab: {fileID: 2921264126324328830, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
+  image: {fileID: 21300000, guid: dc6b356feed29be44a4cdaf9736fa792, type: 3}

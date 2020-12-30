@@ -5,13 +5,13 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     // Current Health of Object
-    public float currentHealth;
+    private float currentHealth;
 
     // Max Health of Object
-    public float maxHealth;
+    private float maxHealth;
 
     // Camera Object
-    public Camera mainCamera;
+    private Camera mainCamera;
 
     // Decides which health var to use
     public bool enemy;

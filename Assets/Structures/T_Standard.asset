@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7541f22bc1f37f4db6304f572052865, type: 3}
-  m_Name: Spawner
+  m_Name: T_Standard
   m_EditorClassIdentifier: 
-  structureName: Spawner
-  prefab: {fileID: 2921264126324328830, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
-  image: {fileID: 21300000, guid: 187b4e76ad56da74c860e3a6f9c9b79f, type: 3}
+  structureName: Standard Tower
+  prefab: {fileID: 8297330278252570736, guid: 2074f851109fa7548850ed799596cc9c, type: 3}
+  image: {fileID: 21300000, guid: a30548d3d5bca854fa9f1f7f759378a2, type: 3}
