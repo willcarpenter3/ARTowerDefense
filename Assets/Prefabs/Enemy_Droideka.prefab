@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 1362838601338328496}
   - component: {fileID: 7054201303570064691}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_Droideka
   m_TagString: follow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b84b5d89895af4ca8a042575be01ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  speed: 0.01
+  health: 300
+  speed: 0.007
   waypoints: []
   currentIndex: 0
 --- !u!54 &1362838601338328496
@@ -440,9 +440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f81dfe0deed4444bfd8906b2fab5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
-  mainCamera: {fileID: 0}
   enemy: 1
   enemyBehavior: {fileID: 4664787636617481284}
   objectiveBehavior: {fileID: 0}
