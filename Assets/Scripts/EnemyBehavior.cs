@@ -46,7 +46,7 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (health <= 0)
         {
@@ -57,8 +57,8 @@ public class EnemyBehavior : MonoBehaviour
             }
             // Ragdoll Function
             DoRagdoll();
-            
-            //Destroy(gameObject); // Change to 10 secs
+            // Explosion Particle Effect
+            Destroy(gameObject, 5f); // Change to 10 secs
         }
 
         
