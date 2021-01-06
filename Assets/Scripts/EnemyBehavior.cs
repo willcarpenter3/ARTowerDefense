@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,8 +20,21 @@ public class EnemyBehavior : MonoBehaviour
 
     private float currentSpeed;
 
+    private Collider mainCollider;
+
+    private Collider[] allColliders;
+
+    //private Rigidbody mainRigidBody;
+
+    private Rigidbody[] allRigidBodies;
+
     private void Start()
     {
+        mainCollider = GetComponent<Collider>();
+        //mainRigidBody = GetComponent<Rigidbody>();
+        allColliders = GetComponentsInChildren<Collider>(true);
+        allRigidBodies = GetComponentsInChildren<Rigidbody>(true);
+
         currentSpeed = speed;
 
         if (waypoints.Count > 0)
@@ -28,18 +42,24 @@ public class EnemyBehavior : MonoBehaviour
             Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
             transform.LookAt(targetPosition);
         }
+
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (health <= 0)
         {
+            mainCollider.isTrigger = false;
             if (GameManager.Instance() != null)
             {
                 GameManager.Instance().Invoke("checkWin", 0.1f);
             }
-            Destroy(gameObject);
+            gameObject.tag = "Untagged";
+            // Ragdoll Function
+            DoRagdoll();
+            // Explosion Particle Effect
+            Destroy(gameObject, 5f); // Change to 10 secs
         }
 
         
@@ -59,6 +79,19 @@ public class EnemyBehavior : MonoBehaviour
             objective.Damage();
         }
         
+    }
+
+    private void DoRagdoll()
+    {
+        GetComponent<Animator>().enabled = false;
+        foreach (var col in allColliders)
+        {
+            col.enabled = true;
+        }
+        foreach (var rb in allRigidBodies)
+        {
+            rb.isKinematic = false;
+        }
     }
 
     public void Damage()
