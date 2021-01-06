@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public enum Phase { PlaneSelection, Placing, Pathing, Playing };
+public enum Phase { PlaneSelection, ObjectivePlacing, SpawnerPlacing, Pathing, TowerPlacing, Playing };
 
 public class GameManager : MonoBehaviour
 {
 
     public Text debug;
 
-    public Phase gamePhase = Phase.Placing;
+    public Phase gamePhase = Phase.PlaneSelection;
 
     public List<EnemySpawner> spawners;
 
@@ -29,6 +29,12 @@ public class GameManager : MonoBehaviour
 
     private GameObject currentSelectedEffect;
 
+    //Round Logic
+    public int roundsToWin = 15;
+
+    private int roundNumber = 1;
+
+    //Singleton Game Manager Logic
     public static GameManager instance;
 
     public static GameManager Instance()
@@ -75,7 +81,28 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        gameWin();
+        if (roundNumber == roundsToWin)
+        {
+            //Win the game and either quit or jump into endless mode
+            gameWin();
+        }
+        else
+        {
+            //Reset Spawners
+            foreach (EnemySpawner spawn in spawners)
+            {
+                spawn.started = false;
+                spawn.empty = false;
+                spawn.numEnemies = 10;
+            }
+
+
+            //Advance to the next round
+            roundNumber++;
+            nextPhase();
+            debug.text = "Round Number: " + roundNumber;
+        }
+        
     }
 
     public void addSpawner(EnemySpawner e)
@@ -95,20 +122,36 @@ public class GameManager : MonoBehaviour
         switch(gamePhase)
         {
             case Phase.PlaneSelection:
-                gamePhase = Phase.Placing;
-                structureMenu.ChangeMenu(structureMenu.placingStructures);
-                phaseDesc.text = "Place the objective, enemy spawners, and defense towers";
+                gamePhase = Phase.ObjectivePlacing;
+                structureMenu.ChangeMenu(structureMenu.objectiveStructures);
+                phaseDesc.text = "Place your base (Choose wisely, you can only place one!)";
                 break;
-            case Phase.Placing:
+            case Phase.ObjectivePlacing:
+                gamePhase = Phase.SpawnerPlacing;
+                structureMenu.ChangeMenu(structureMenu.spawnerStructures);
+                phaseDesc.text = "Place spawners for the different enemy types";
+                break;
+            case Phase.SpawnerPlacing:
                 gamePhase = Phase.Pathing;
                 structureMenu.ChangeMenu(structureMenu.pathingStructures);
                 phaseDesc.text = "Place waypoints for the path of the designated spawner's enemies";
                 addSelectedEffect();
                 break;
             case Phase.Pathing:
+                gamePhase = Phase.TowerPlacing;
+                structureMenu.ChangeMenu(structureMenu.towerStructures);
+                phaseDesc.text = "Place towers to defend your base!";
+                removeSelectedEffect();
+                break;
+            case Phase.TowerPlacing:
                 gamePhase = Phase.Playing;
                 structureMenu.ChangeMenu(structureMenu.playingStructures);
                 phaseDesc.text = "Will the enemies get defeated before they destroy the objective?";
+                break;
+            case Phase.Playing:
+                gamePhase = Phase.TowerPlacing;
+                structureMenu.ChangeMenu(structureMenu.towerStructures);
+                phaseDesc.text = "Place towers to defend your base!";
                 removeSelectedEffect();
                 break;
             default:
@@ -116,6 +159,12 @@ public class GameManager : MonoBehaviour
                 phaseDesc.text = "Select the plane you want to play on";
                 break;
         }
+    }
+
+    public void nextPhase(Phase phase)
+    {
+        gamePhase = phase - 1;
+        nextPhase();
     }
 
     public void nextSpawner()

@@ -59,7 +59,8 @@ public class EnemyBehavior : MonoBehaviour
             // Ragdoll Function
             DoRagdoll();
             // Explosion Particle Effect
-            Destroy(gameObject, 5f); // Change to 10 secs
+            Destroy(gameObject, 2f); // Change to 10 secs
+            this.enabled = false;
         }
 
         
