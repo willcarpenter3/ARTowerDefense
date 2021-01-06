@@ -55,6 +55,7 @@ public class EnemyBehavior : MonoBehaviour
             {
                 GameManager.Instance().Invoke("checkWin", 0.1f);
             }
+            gameObject.tag = "Untagged";
             // Ragdoll Function
             DoRagdoll();
             // Explosion Particle Effect
