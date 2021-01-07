@@ -53,13 +53,13 @@ public class EnemyBehavior : MonoBehaviour
             mainCollider.isTrigger = false;
             if (GameManager.Instance() != null)
             {
-                GameManager.Instance().Invoke("checkWin", 0.1f);
+                GameManager.Instance().Invoke("checkWin", 0.5f);
             }
             gameObject.tag = "corpse";
             // Ragdoll Function
             Invoke("DoRagdoll", 0.25f);
             // Explosion Particle Effect
-            Destroy(gameObject, 5f); // Change to 10 secs
+            Destroy(gameObject, 2f); // Change to 10 secs  
             
         }
 
@@ -84,6 +84,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void DoRagdoll()
     {
+        Debug.Log("ragdolling");
         this.enabled = false;
         GetComponent<Animator>().enabled = false;
         foreach (var col in allColliders)
@@ -94,6 +95,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             rb.isKinematic = false;
         }
+        Destroy(this);
     }
 
     public void Damage()

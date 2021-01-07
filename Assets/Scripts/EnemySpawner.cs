@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public int numEnemies = 10;
+    public int enemiesToSpawn = 10;
+
+    private int numEnemies;
 
     public float startDelay = 1f;
 
@@ -20,6 +22,11 @@ public class EnemySpawner : MonoBehaviour
     public bool empty = false;
 
     private LineRenderer lineRenderer;
+
+    private void Start()
+    {
+        numEnemies = enemiesToSpawn;
+    }
 
     // Update is called once per frame
     void Update()
@@ -62,6 +69,13 @@ public class EnemySpawner : MonoBehaviour
     {
         waypoints.Add(c);
         //DrawLine(waypoints[waypoints.Count - 1].transform.position);
+    }
+
+    public void ResetSpawner()
+    {
+        started = false;
+        empty = false;
+        numEnemies = enemiesToSpawn;
     }
 
     /*
