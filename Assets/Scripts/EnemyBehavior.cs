@@ -32,8 +32,9 @@ public class EnemyBehavior : MonoBehaviour
     {
         mainCollider = GetComponent<Collider>();
         //mainRigidBody = GetComponent<Rigidbody>();
-        allColliders = GetComponentsInChildren<Collider>(true);
-        allRigidBodies = GetComponentsInChildren<Rigidbody>(true);
+        
+        allColliders = gameObject.transform.GetChild(0).GetComponentsInChildren<Collider>(true);
+        allRigidBodies = gameObject.transform.GetChild(0).GetComponentsInChildren<Rigidbody>(true);
 
         currentSpeed = speed;
 
