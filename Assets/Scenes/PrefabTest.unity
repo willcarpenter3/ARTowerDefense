@@ -424,6 +424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower_Standard (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 8297330278252570736, guid: 2074f851109fa7548850ed799596cc9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8677830933730439882, guid: 2074f851109fa7548850ed799596cc9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.685
@@ -5564,6 +5568,10 @@ PrefabInstance:
     - target: {fileID: 8297330278252570736, guid: aea304f236181cb47bdc898e96673f1b, type: 3}
       propertyPath: m_Name
       value: Tower_Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8297330278252570736, guid: aea304f236181cb47bdc898e96673f1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8677830933730439882, guid: aea304f236181cb47bdc898e96673f1b, type: 3}
       propertyPath: m_LocalPosition.x

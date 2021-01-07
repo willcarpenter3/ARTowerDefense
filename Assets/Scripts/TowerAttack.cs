@@ -109,7 +109,6 @@ public class TowerAttack : MonoBehaviour
         else
         {
             targetEnemy = null;
-            attacking = false;
         }
     }
 
@@ -168,6 +167,7 @@ public class TowerAttack : MonoBehaviour
             WaitForSeconds wait = new WaitForSeconds(fireDelay);
             yield return wait;
         }
+        attacking = false;
     }
 
 }
