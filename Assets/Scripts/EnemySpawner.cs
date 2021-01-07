@@ -42,12 +42,11 @@ public class EnemySpawner : MonoBehaviour
 
 
         //TODO get rid of this, it's for testing purposes only
-        if (Input.GetKeyUp(KeyCode.Space) && (GameManager.Instance().getGamePhase() == Phase.PlaneSelection))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
+            Debug.Log("bruh");
             GameManager.Instance().addSpawner(this);
-            GameManager.Instance().nextPhase();
-            GameManager.Instance().nextPhase();
-            GameManager.Instance().nextPhase();
+            GameManager.Instance().nextPhase(Phase.Playing);
         }
     }
 
@@ -62,9 +61,10 @@ public class EnemySpawner : MonoBehaviour
     public void addWaypoint(Collider c)
     {
         waypoints.Add(c);
-        DrawLine(waypoints[waypoints.Count - 1].transform.position);
+        //DrawLine(waypoints[waypoints.Count - 1].transform.position);
     }
 
+    /*
     private void DrawLine(Vector3 end)
     {
         GameObject line = new GameObject();
@@ -78,4 +78,5 @@ public class EnemySpawner : MonoBehaviour
         // Translucent
         // Color based on spawner
     }
+    */
 }
