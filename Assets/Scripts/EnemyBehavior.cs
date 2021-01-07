@@ -37,7 +37,7 @@ public class EnemyBehavior : MonoBehaviour
 
         currentSpeed = speed;
 
-        if (waypoints.Count > 0)
+        if (waypoints.Count > 0 && waypoints[currentIndex] != null)
         {
             Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
             transform.LookAt(targetPosition);
@@ -120,14 +120,18 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Colliding");
+        //Debug.Log("Colliding " + other.gameObject.name);
         if (waypoints.Count > 0)
         {
             if (other == waypoints[currentIndex])
             {
-                currentIndex++;
-                Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
-                transform.LookAt(targetPosition);
+                if (currentIndex < waypoints.Count - 1)
+                {
+                    currentIndex++;
+                    Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
+                    transform.LookAt(targetPosition);
+                }
+                
             }
         }
         if (other.gameObject.GetComponent<Bolt>() != null)
