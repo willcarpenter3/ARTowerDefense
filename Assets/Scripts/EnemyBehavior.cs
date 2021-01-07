@@ -55,12 +55,12 @@ public class EnemyBehavior : MonoBehaviour
             {
                 GameManager.Instance().Invoke("checkWin", 0.1f);
             }
-            gameObject.tag = "Untagged";
+            gameObject.tag = "corpse";
             // Ragdoll Function
-            DoRagdoll();
+            Invoke("DoRagdoll", 0.25f);
             // Explosion Particle Effect
-            Destroy(gameObject, 2f); // Change to 10 secs
-            this.enabled = false;
+            Destroy(gameObject, 5f); // Change to 10 secs
+            
         }
 
         
@@ -84,6 +84,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void DoRagdoll()
     {
+        this.enabled = false;
         GetComponent<Animator>().enabled = false;
         foreach (var col in allColliders)
         {
