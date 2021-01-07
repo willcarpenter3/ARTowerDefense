@@ -113,4 +113,6 @@ MonoBehaviour:
   startDelay: 1
   delay: 1
   waypoints: []
-  enemyPrefab: {fileID: 6904783532343463793, guid: cdfb2aa8cf8d85840b75d00f0e69656e, type: 3}
+  enemyPrefab: {fileID: 5190042245827617440, guid: 913c6e7f0dfd9cb46a0b19616f849440, type: 3}
+  started: 0
+  empty: 0

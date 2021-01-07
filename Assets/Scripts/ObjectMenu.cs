@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class ObjectMenu : MonoBehaviour
 {
-    public List<Structure> placingStructures = new List<Structure>();
+    public List<Structure> objectiveStructures = new List<Structure>();
+    public List<Structure> spawnerStructures = new List<Structure>();
     public List<Structure> pathingStructures = new List<Structure>();
+    public List<Structure> towerStructures = new List<Structure>();
     public List<Structure> playingStructures = new List<Structure>();
     public GameObject buttonPrefab;
     public GameObject contentWindow;
