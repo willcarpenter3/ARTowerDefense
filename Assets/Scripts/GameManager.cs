@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         foreach (EnemySpawner spawn in spawners)
         {
-            if (spawn.numEnemies > 0)
+            if (!spawn.empty)
             {
                 return;
             }
@@ -91,9 +91,7 @@ public class GameManager : MonoBehaviour
             //Reset Spawners
             foreach (EnemySpawner spawn in spawners)
             {
-                spawn.started = false;
-                spawn.empty = false;
-                spawn.numEnemies = 10;
+                spawn.ResetSpawner();
             }
 
 
