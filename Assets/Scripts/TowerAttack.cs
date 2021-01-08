@@ -26,6 +26,8 @@ public class TowerAttack : MonoBehaviour
     public float shockTime = 2f;
     public float shockSpeed = 0f;
 
+    [Header("Animation")]
+    public Animator animator;
 
     private GameObject targetEnemy;
     private bool attacking = false;
@@ -34,6 +36,8 @@ public class TowerAttack : MonoBehaviour
     private readonly Collider[] hitColliders = new Collider[250];
     private Vector3 targetRotation;
     private readonly Collider[] aoeColliders = new Collider[250];
+
+    
 
 
 
@@ -117,6 +121,11 @@ public class TowerAttack : MonoBehaviour
         // Deal damage if there's an enemy
         if (targetEnemy != null)
         {
+            if (towerType == TowerType.Standard)
+            {
+                animator.SetBool("isShooting", true);
+            }
+            
             // Spawn a laser that gets sent towards the target
             targetRotation = targetEnemy.transform.position - transform.position;
             Instantiate(laserPrefab, laserSpawn.transform.position, Quaternion.LookRotation(targetRotation, Vector3.up));
@@ -168,6 +177,10 @@ public class TowerAttack : MonoBehaviour
             yield return wait;
         }
         attacking = false;
+        if (towerType == TowerType.Standard)
+        {
+            animator.SetBool("isShooting", false);
+        }
     }
 
 }

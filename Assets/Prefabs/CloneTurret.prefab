@@ -4892,6 +4892,7 @@ MonoBehaviour:
   aoeDamage: 5
   shockTime: 2
   shockSpeed: 0
+  animator: {fileID: 5802538347301944889}
 --- !u!1 &138578373608187866
 GameObject:
   m_ObjectHideFlags: 0
@@ -5046,6 +5047,11 @@ PrefabInstance:
 --- !u!4 &461316831257191491 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
+  m_PrefabInstance: {fileID: 138578372883317672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5802538347301944889 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
   m_PrefabInstance: {fileID: 138578372883317672}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8851324121021527261 stripped
