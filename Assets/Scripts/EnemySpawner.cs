@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public int numEnemies = 10;
+    public int enemiesToSpawn = 10;
+
+    private int numEnemies;
 
     public float startDelay = 1f;
 
@@ -15,9 +17,16 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject enemyPrefab;
 
-    bool started = false;
+    public bool started = false;
 
-    bool empty = false;
+    public bool empty = false;
+
+    private LineRenderer lineRenderer;
+
+    private void Start()
+    {
+        numEnemies = enemiesToSpawn;
+    }
 
     // Update is called once per frame
     void Update()
@@ -40,12 +49,11 @@ public class EnemySpawner : MonoBehaviour
 
 
         //TODO get rid of this, it's for testing purposes only
-        if (Input.GetKeyUp(KeyCode.Space) && (GameManager.Instance().getGamePhase() == Phase.PlaneSelection))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
+            Debug.Log("bruh");
             GameManager.Instance().addSpawner(this);
-            GameManager.Instance().nextPhase();
-            GameManager.Instance().nextPhase();
-            GameManager.Instance().nextPhase();
+            GameManager.Instance().nextPhase(Phase.Playing);
         }
     }
 
@@ -60,5 +68,29 @@ public class EnemySpawner : MonoBehaviour
     public void addWaypoint(Collider c)
     {
         waypoints.Add(c);
+        //DrawLine(waypoints[waypoints.Count - 1].transform.position);
     }
+
+    public void ResetSpawner()
+    {
+        started = false;
+        empty = false;
+        numEnemies = enemiesToSpawn;
+    }
+
+    /*
+    private void DrawLine(Vector3 end)
+    {
+        GameObject line = new GameObject();
+        line.transform.position = waypoints[waypoints.Count - 1].transform.position;
+        line.AddComponent<LineRenderer>();
+        lineRenderer = line.GetComponent<LineRenderer>();
+        lineRenderer.SetPosition(waypoints.Count - 2, line.transform.position);
+        lineRenderer.SetPosition(waypoints.Count - 1, end);
+        // Wide render
+        // Low to the ground (plane)
+        // Translucent
+        // Color based on spawner
+    }
+    */
 }

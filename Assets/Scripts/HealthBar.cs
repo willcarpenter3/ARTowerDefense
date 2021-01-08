@@ -41,12 +41,16 @@ public class HealthBar : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Set Health Bar to Enemy Health 
         if (enemy)
         {
             currentHealth = enemyBehavior.health;
+            if (currentHealth < 0)
+            {
+                currentHealth = 0;
+            }
         }
         // Set Health Bar to Objective Health 
         else

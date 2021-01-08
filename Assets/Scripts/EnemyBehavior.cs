@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,27 +20,48 @@ public class EnemyBehavior : MonoBehaviour
 
     private float currentSpeed;
 
+    private Collider mainCollider;
+
+    private Collider[] allColliders;
+
+    //private Rigidbody mainRigidBody;
+
+    private Rigidbody[] allRigidBodies;
+
     private void Start()
     {
+        mainCollider = GetComponent<Collider>();
+        //mainRigidBody = GetComponent<Rigidbody>();
+        
+        allColliders = gameObject.transform.GetChild(0).GetComponentsInChildren<Collider>(true);
+        allRigidBodies = gameObject.transform.GetChild(0).GetComponentsInChildren<Rigidbody>(true);
+
         currentSpeed = speed;
 
-        if (waypoints.Count > 0)
+        if (waypoints.Count > 0 && waypoints[currentIndex] != null)
         {
             Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
             transform.LookAt(targetPosition);
         }
+
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (health <= 0)
         {
+            mainCollider.isTrigger = false;
             if (GameManager.Instance() != null)
             {
-                GameManager.Instance().Invoke("checkWin", 0.1f);
+                GameManager.Instance().Invoke("checkWin", 0.5f);
             }
-            Destroy(gameObject);
+            gameObject.tag = "corpse";
+            // Ragdoll Function
+            Invoke("DoRagdoll", 0.25f);
+            // Explosion Particle Effect
+            Destroy(gameObject, 2f); // Change to 10 secs  
+            
         }
 
         
@@ -59,6 +81,22 @@ public class EnemyBehavior : MonoBehaviour
             objective.Damage();
         }
         
+    }
+
+    private void DoRagdoll()
+    {
+        Debug.Log("ragdolling");
+        this.enabled = false;
+        GetComponent<Animator>().enabled = false;
+        foreach (var col in allColliders)
+        {
+            col.enabled = true;
+        }
+        foreach (var rb in allRigidBodies)
+        {
+            rb.isKinematic = false;
+        }
+        Destroy(this);
     }
 
     public void Damage()
@@ -85,14 +123,18 @@ public class EnemyBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Colliding");
+        //Debug.Log("Colliding " + other.gameObject.name);
         if (waypoints.Count > 0)
         {
             if (other == waypoints[currentIndex])
             {
-                currentIndex++;
-                Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
-                transform.LookAt(targetPosition);
+                if (currentIndex < waypoints.Count - 1)
+                {
+                    currentIndex++;
+                    Vector3 targetPosition = new Vector3(waypoints[currentIndex].transform.position.x, transform.position.y, waypoints[currentIndex].transform.position.z);
+                    transform.LookAt(targetPosition);
+                }
+                
             }
         }
         if (other.gameObject.GetComponent<Bolt>() != null)

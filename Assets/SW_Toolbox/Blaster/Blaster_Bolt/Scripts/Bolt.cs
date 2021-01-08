@@ -53,14 +53,14 @@ public class Bolt : MonoBehaviour
         else
         {
             Debug.Log("Collisioned");
-            if (collision.collider.gameObject.CompareTag("follow"))
+            if (collision.collider.gameObject.CompareTag("follow") || collision.collider.gameObject.CompareTag("corpse"))
             {
                 Debug.Log("Follow tag found");
-                GameObject explosion = Instantiate(collisionExplosion, transform.position, transform.rotation);
+                //GameObject explosion = Instantiate(collisionExplosion, transform.position, transform.rotation);
                 Destroy(gameObject);
-                Destroy(explosion, 1f);
+                //Destroy(explosion, 1f);
 
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
     }
