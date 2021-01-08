@@ -6,9 +6,17 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
 
+    public enum EnemyType { B1, B2, Droideka}
+
+    public EnemyType enemyType;
+
     public int health = 100;
 
     public float speed = 2f;
+
+    public Material transparentMat;
+
+    public SkinnedMeshRenderer droidekaShield;
 
     private bool inObjectiveRange = false;
 
@@ -59,6 +67,14 @@ public class EnemyBehavior : MonoBehaviour
             // Explosion Particle Effect
             //Destroy(gameObject, 2f); // Change to 10 secs  
             
+        }
+
+        if (health <= 25 && enemyType == EnemyType.Droideka)
+        {
+            Debug.Log("destroying shield");
+            Material[] mats = droidekaShield.materials;
+            mats[3] = transparentMat;
+            droidekaShield.materials = mats;
         }
 
         
