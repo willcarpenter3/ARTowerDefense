@@ -21,6 +21,15 @@ public class EnemySpawner : MonoBehaviour
 
     private LineRenderer lineRenderer;
 
+    private GameObject line;
+
+    private void Start()
+    {
+        CreateLine();
+        AddPointToLine(waypoints[0].transform.position, 1);
+        AddPointToLine(waypoints[1].transform.position, 2);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -61,22 +70,51 @@ public class EnemySpawner : MonoBehaviour
     public void addWaypoint(Collider c)
     {
         waypoints.Add(c);
-        //DrawLine(waypoints[waypoints.Count - 1].transform.position);
+        
+        AddPointToLine(waypoints[waypoints.Count - 1].transform.position, waypoints.Count);
     }
 
-    /*
-    private void DrawLine(Vector3 end)
+    // Create Line
+    private void CreateLine()
     {
-        GameObject line = new GameObject();
-        line.transform.position = waypoints[waypoints.Count - 1].transform.position;
+        line = new GameObject();
+        line.name = "Line";
+        line.transform.position = transform.position;
         line.AddComponent<LineRenderer>();
         lineRenderer = line.GetComponent<LineRenderer>();
-        lineRenderer.SetPosition(waypoints.Count - 2, line.transform.position);
-        lineRenderer.SetPosition(waypoints.Count - 1, end);
+        lineRenderer.SetPosition(0, line.transform.position);
+        // Wide render
+        //lineRenderer
+        // Low to the ground (plane)
+        // Translucent
+        // Color based on spawner
+        //lineRenderer.material = new Material();
+    }
+
+
+    // Add Point to Line
+    private void AddPointToLine(Vector3 point, int index)
+    {
+        lineRenderer = line.GetComponent<LineRenderer>();
+        if (lineRenderer.positionCount <= index)
+        {
+            lineRenderer.positionCount += 1;
+        }
+        lineRenderer.SetPosition(index, point);
+        // Wide render
+        lineRenderer.widthMultiplier = 0.025f;
+        // Low to the ground (plane)
+        // Translucent
+        // Color based on spawner
+    }
+
+    // End Line (Last waypoint to Objective)
+    public void EndLine(Vector3 end)
+    {
+        lineRenderer.SetPosition(waypoints.Count, end);
         // Wide render
         // Low to the ground (plane)
         // Translucent
         // Color based on spawner
     }
-    */
 }
