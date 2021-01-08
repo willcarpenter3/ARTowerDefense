@@ -32,8 +32,9 @@ public class EnemyBehavior : MonoBehaviour
     {
         mainCollider = GetComponent<Collider>();
         //mainRigidBody = GetComponent<Rigidbody>();
-        allColliders = GetComponentsInChildren<Collider>(true);
-        allRigidBodies = GetComponentsInChildren<Rigidbody>(true);
+        
+        allColliders = gameObject.transform.GetChild(0).GetComponentsInChildren<Collider>(true);
+        allRigidBodies = gameObject.transform.GetChild(0).GetComponentsInChildren<Rigidbody>(true);
 
         currentSpeed = speed;
 
@@ -51,15 +52,12 @@ public class EnemyBehavior : MonoBehaviour
         if (health <= 0)
         {
             mainCollider.isTrigger = false;
-            if (GameManager.Instance() != null)
-            {
-                GameManager.Instance().Invoke("checkWin", 0.1f);
-            }
+            
             gameObject.tag = "corpse";
             // Ragdoll Function
             Invoke("DoRagdoll", 0.25f);
             // Explosion Particle Effect
-            Destroy(gameObject, 5f); // Change to 10 secs
+            //Destroy(gameObject, 2f); // Change to 10 secs  
             
         }
 
@@ -84,8 +82,12 @@ public class EnemyBehavior : MonoBehaviour
 
     private void DoRagdoll()
     {
+        Debug.Log("ragdolling");
         this.enabled = false;
-        GetComponent<Animator>().enabled = false;
+        if (GetComponent<Animator>() != null)
+        {
+            GetComponent<Animator>().enabled = false;
+        }
         foreach (var col in allColliders)
         {
             col.enabled = true;
@@ -94,6 +96,13 @@ public class EnemyBehavior : MonoBehaviour
         {
             rb.isKinematic = false;
         }
+        if (GameManager.Instance() != null)
+        {
+            GameManager.Instance().Invoke("checkWin", 0.1f);
+        }
+
+        Destroy(gameObject);
+
     }
 
     public void Damage()

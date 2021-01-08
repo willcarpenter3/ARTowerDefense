@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b84b5d89895af4ca8a042575be01ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
-  speed: 0.007
+  health: 150
+  speed: 0.0035
   waypoints: []
   currentIndex: 0
 --- !u!54 &1362838601338328496

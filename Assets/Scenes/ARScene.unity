@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 730939724}
   m_HandleRect: {fileID: 730939723}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4188,7 +4188,7 @@ MonoBehaviour:
   phaseDesc: {fileID: 1589410277}
   structureMenu: {fileID: 1879866758}
   selectedEffect: {fileID: 4623712475414548718, guid: 1ee317b56d885a14ca67ce57e6a98bd4, type: 3}
-  roundsToWin: 15
+  roundsToWin: 3
 --- !u!4 &1362799555
 Transform:
   m_ObjectHideFlags: 0
