@@ -30,10 +30,10 @@ public class TowerAttack : MonoBehaviour
     private GameObject targetEnemy;
     private bool attacking = false;
 
-    // Max detection of 10 enemies at a time
-    private readonly Collider[] hitColliders = new Collider[10];
+    // Max detection of 250 enemies at a time
+    private readonly Collider[] hitColliders = new Collider[250];
     private Vector3 targetRotation;
-    private readonly Collider[] aoeColliders = new Collider[10];
+    private readonly Collider[] aoeColliders = new Collider[250];
 
 
 
