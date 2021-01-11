@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: T_Sniper
   m_EditorClassIdentifier: 
   structureName: Sniper Tower
-  prefab: {fileID: 8297330278252570736, guid: 7cab07623dbdf894d86833a2dd4b57b3, type: 3}
+  prefab: {fileID: 5223061901314022218, guid: 1c69898e82d76f244ab66284cbde21c0, type: 3}
   image: {fileID: 21300000, guid: 5ba4c492a3f8f7446ac070be8b158f4e, type: 3}

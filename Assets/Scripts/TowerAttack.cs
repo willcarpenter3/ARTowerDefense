@@ -125,9 +125,14 @@ public class TowerAttack : MonoBehaviour
             {
                 animator.SetBool("isShooting", true);
             }
+
+            if (towerType == TowerType.Sniper)
+            {
+                animator.SetTrigger("shootTrigger");
+            }
             
             // Spawn a laser that gets sent towards the target
-            targetRotation = targetEnemy.transform.position - transform.position;
+            targetRotation = targetEnemy.transform.position - laserSpawn.transform.position;
             Instantiate(laserPrefab, laserSpawn.transform.position, Quaternion.LookRotation(targetRotation, Vector3.up));
 
             // Deal area of effect damage
