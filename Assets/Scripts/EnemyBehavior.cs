@@ -168,8 +168,7 @@ public class EnemyBehavior : MonoBehaviour
     public void Shock(float newSpeed, float shockTime)
     {
         currentSpeed = newSpeed;
-        Unshock(shockTime);
-
+        StartCoroutine(Unshock(shockTime));
     }
 
     IEnumerator Unshock(float waitTime)
