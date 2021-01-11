@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1110388708}
   m_HandleRect: {fileID: 1110388707}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2958,13 +2958,21 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 1549319827}
+    - target: {fileID: 2921264126324328829, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
+      propertyPath: lineMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 68214663a70a4ec4d8c5f16c4168c322, type: 2}
+    - target: {fileID: 2921264126324328829, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
+      propertyPath: enemyType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2921264126324328830, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
       propertyPath: m_Name
       value: Spawn_Droideka
       objectReference: {fileID: 0}
     - target: {fileID: 2921264126324328830, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
@@ -5209,6 +5217,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 1549319827}
+    - target: {fileID: 2921264126324328829, guid: 5a9704fd4b0bc3947acb3fab20fb2eea, type: 3}
+      propertyPath: lineMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 68214663a70a4ec4d8c5f16c4168c322, type: 2}
     - target: {fileID: 2921264126324328830, guid: 5a9704fd4b0bc3947acb3fab20fb2eea, type: 3}
       propertyPath: m_Name
       value: Spawn_B1
@@ -5842,7 +5854,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1564118535}
   m_HandleRect: {fileID: 1564118534}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

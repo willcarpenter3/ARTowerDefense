@@ -116,3 +116,5 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5190042245827617440, guid: 913c6e7f0dfd9cb46a0b19616f849440, type: 3}
   started: 0
   empty: 0
+  enemyType: 0
+  lineMaterial: {fileID: 2100000, guid: 68214663a70a4ec4d8c5f16c4168c322, type: 2}

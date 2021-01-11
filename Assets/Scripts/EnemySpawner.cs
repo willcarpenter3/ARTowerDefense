@@ -25,13 +25,17 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject line;
 
+    public EnemyBehavior.EnemyType enemyType;
+
+    public Material lineMaterial;
+
     private void Start()
     {
         numEnemies = enemiesToSpawn;
 
         CreateLine();
-        AddPointToLine(waypoints[0].transform.position, 1);
-        AddPointToLine(waypoints[1].transform.position, 2);
+        //AddPointToLine(waypoints[0].transform.position, 1);
+        //AddPointToLine(waypoints[1].transform.position, 2);
     }
     // Update is called once per frame
     void Update()
@@ -95,37 +99,37 @@ public class EnemySpawner : MonoBehaviour
         lineRenderer = line.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, line.transform.position);
         // Wide render
-        //lineRenderer
-        // Low to the ground (plane)
-        // Translucent
+        lineRenderer.widthMultiplier = 0.025f;
+        lineRenderer.material = lineMaterial;
         // Color based on spawner
-        //lineRenderer.material = new Material();
+        if (enemyType == EnemyBehavior.EnemyType.B1)
+        {
+
+            lineRenderer.startColor = new Color(244f / 255f, 129f / 255f, 0f / 255f, 1f);
+            lineRenderer.endColor = new Color(244f / 255f, 129f / 255f, 0f / 255f, 1f);
+        }
+        else if (enemyType == EnemyBehavior.EnemyType.B2)
+        {
+            lineRenderer.startColor = new Color(70f / 255f, 80f / 255f, 87f / 255f, 1f);
+            lineRenderer.endColor = new Color(70f / 255f, 80f / 255f, 87f / 255f, 1f);
+        }
+        else if (enemyType == EnemyBehavior.EnemyType.Droideka)
+        {
+            lineRenderer.startColor = new Color(89f / 255f, 183f / 255f, 255f / 255f, 1f);
+            lineRenderer.endColor = new Color(89f / 255f, 183f / 255f, 255f / 255f, 1f);
+        }
     }
 
 
     // Add Point to Line
     private void AddPointToLine(Vector3 point, int index)
     {
-        lineRenderer = line.GetComponent<LineRenderer>();
+        // Adds to positions to vertices array
         if (lineRenderer.positionCount <= index)
         {
             lineRenderer.positionCount += 1;
         }
         lineRenderer.SetPosition(index, point);
-        // Wide render
-        lineRenderer.widthMultiplier = 0.025f;
-        // Low to the ground (plane)
-        // Translucent
-        // Color based on spawner
     }
 
-    // End Line (Last waypoint to Objective)
-    public void EndLine(Vector3 end)
-    {
-        lineRenderer.SetPosition(waypoints.Count, end);
-        // Wide render
-        // Low to the ground (plane)
-        // Translucent
-        // Color based on spawner
-    }
 }
