@@ -13,7 +13,7 @@ public class ObjectMenu : MonoBehaviour
     public GameObject buttonPrefab;
     public GameObject contentWindow;
 
-    private GameObject selectedStructure;
+    public GameObject selectedStructure;
 
     public void Awake()
     {
