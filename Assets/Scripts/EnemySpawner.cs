@@ -23,11 +23,19 @@ public class EnemySpawner : MonoBehaviour
 
     private LineRenderer lineRenderer;
 
+    private GameObject line;
+
+    public EnemyBehavior.EnemyType enemyType;
+
+    public Material lineMaterial;
+
     private void Start()
     {
         numEnemies = enemiesToSpawn;
-    }
 
+        CreateLine();
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -68,7 +76,8 @@ public class EnemySpawner : MonoBehaviour
     public void addWaypoint(Collider c)
     {
         waypoints.Add(c);
-        //DrawLine(waypoints[waypoints.Count - 1].transform.position);
+        
+        AddPointToLine(waypoints[waypoints.Count - 1].transform.position, waypoints.Count);
     }
 
     public void ResetSpawner()
@@ -78,19 +87,53 @@ public class EnemySpawner : MonoBehaviour
         numEnemies = enemiesToSpawn;
     }
 
-    /*
-    private void DrawLine(Vector3 end)
+    
+    // Create Line
+    private void CreateLine()
     {
-        GameObject line = new GameObject();
-        line.transform.position = waypoints[waypoints.Count - 1].transform.position;
+        line = new GameObject();
+        line.name = "Line";
+        line.transform.position = transform.position;
         line.AddComponent<LineRenderer>();
         lineRenderer = line.GetComponent<LineRenderer>();
-        lineRenderer.SetPosition(waypoints.Count - 2, line.transform.position);
-        lineRenderer.SetPosition(waypoints.Count - 1, end);
+        lineRenderer.SetPosition(0, line.transform.position);
         // Wide render
-        // Low to the ground (plane)
-        // Translucent
+        lineRenderer.widthMultiplier = 0.025f;
+        lineRenderer.material = lineMaterial;
         // Color based on spawner
+        if (enemyType == EnemyBehavior.EnemyType.B1)
+        {
+
+            lineRenderer.startColor = new Color(244f / 255f, 129f / 255f, 0f / 255f, 1f);
+            lineRenderer.endColor = new Color(244f / 255f, 129f / 255f, 0f / 255f, 1f);
+        }
+        else if (enemyType == EnemyBehavior.EnemyType.B2)
+        {
+            lineRenderer.startColor = new Color(70f / 255f, 80f / 255f, 87f / 255f, 1f);
+            lineRenderer.endColor = new Color(70f / 255f, 80f / 255f, 87f / 255f, 1f);
+        }
+        else if (enemyType == EnemyBehavior.EnemyType.Droideka)
+        {
+            lineRenderer.startColor = new Color(89f / 255f, 183f / 255f, 255f / 255f, 1f);
+            lineRenderer.endColor = new Color(89f / 255f, 183f / 255f, 255f / 255f, 1f);
+        }
+        lineRenderer.enabled = false;
     }
-    */
+
+
+    // Add Point to Line
+    private void AddPointToLine(Vector3 point, int index)
+    {
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+        }
+        // Adds to positions to vertices array
+        if (lineRenderer.positionCount <= index)
+        {
+            lineRenderer.positionCount += 1;
+        }
+        lineRenderer.SetPosition(index, point);
+    }
+
 }
