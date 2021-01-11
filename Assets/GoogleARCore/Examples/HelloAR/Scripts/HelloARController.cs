@@ -237,6 +237,12 @@ namespace GoogleARCore.Examples.HelloAR
                     planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(_usablePlane);
                     planeObject.GetComponent<DetectedPlaneVisualizer>().ChangeColor(Color.green);
                     ObjectsMenu.SetActive(true);
+
+                    if (DepthMenu != null)
+                    {
+                        // Show depth card window if necessary.
+                        DepthMenu.ConfigureDepthBeforePlacingFirstAsset();
+                    }
                     //foreach (GameObject p in PlaneGenerator.planeObjs)
                     //{
                     //   Destroy(p);

@@ -24,7 +24,7 @@ public class Bolt : MonoBehaviour
         Vector3 powVec = new Vector3(speed, speed, speed);
         direction.Scale(powVec);
         projRigid.velocity = direction;
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 2f);
     }
 
     private void OnCollisionEnter(Collision collision)
