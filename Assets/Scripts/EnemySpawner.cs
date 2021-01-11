@@ -34,8 +34,7 @@ public class EnemySpawner : MonoBehaviour
         numEnemies = enemiesToSpawn;
 
         CreateLine();
-        //AddPointToLine(waypoints[0].transform.position, 1);
-        //AddPointToLine(waypoints[1].transform.position, 2);
+
     }
     // Update is called once per frame
     void Update()
@@ -118,12 +117,17 @@ public class EnemySpawner : MonoBehaviour
             lineRenderer.startColor = new Color(89f / 255f, 183f / 255f, 255f / 255f, 1f);
             lineRenderer.endColor = new Color(89f / 255f, 183f / 255f, 255f / 255f, 1f);
         }
+        lineRenderer.enabled = false;
     }
 
 
     // Add Point to Line
     private void AddPointToLine(Vector3 point, int index)
     {
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+        }
         // Adds to positions to vertices array
         if (lineRenderer.positionCount <= index)
         {
