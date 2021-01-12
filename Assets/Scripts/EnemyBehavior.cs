@@ -5,28 +5,44 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    /// <summary>
+    /// Enum to define different enemy types
+    /// </summary>
+    public enum EnemyType { B1, B2, Droideka }
 
-    public enum EnemyType { B1, B2, Droideka}
+    [Header("Enemy Information")]
+    
+    public EnemyType enemyType; //Type of this enemy
 
-    public EnemyType enemyType;
+    public int health = 100; //Health of this enemy unit
 
-    public int health = 100;
+    private bool dead = false; //used to prevent ragdolling several times
 
-    public float speed = 2f;
+    public float speed = 2f; //Speed at which this enemy moves
 
-    public Material transparentMat;
+    private float currentSpeed; //used to stop the enemy during shock tower effect
 
-    public SkinnedMeshRenderer droidekaShield;
+    [Header("Droideka Shield info")]
+    public Material transparentMat; //Completely transparent material - used for "removing" droideka shield
 
-    private bool inObjectiveRange = false;
+    public SkinnedMeshRenderer droidekaShield; //Renderer that renders the droideka shield
 
-    private ObjectiveBehavior objective;
+    [Header("Waypoint Information")]
+    public List<Collider> waypoints; //List of all waypoints that this enemy should visit - assigned from spawner
 
-    public List<Collider> waypoints;
+    public int currentIndex = 0; //Which waypoint the enemy is currently navigating towards
 
-    public int currentIndex = 0;
+    [Header("Misc Inputs")]
 
-    private float currentSpeed;
+    public GameObject shockParticle; //Particle system with the shock/explosion effect for death
+
+    private GameObject shockReference; //Keep a local copy of whatever shock particle is active
+
+    //Other fields
+
+    private bool inObjectiveRange = false; //used to stop the enemy when it has reached its objective
+
+    private ObjectiveBehavior objective; //reference to the objective in the scene
 
     private Collider mainCollider;
 
@@ -57,11 +73,16 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
             mainCollider.isTrigger = false;
             
             gameObject.tag = "corpse";
+            foreach(Collider c in allColliders)
+            {
+                c.gameObject.tag = "corpse";
+            }
+            dead = true;
             // Ragdoll Function
             Invoke("DoRagdoll", 0.25f);
             // Explosion Particle Effect
@@ -117,7 +138,27 @@ public class EnemyBehavior : MonoBehaviour
             GameManager.Instance().Invoke("checkWin", 0.1f);
         }
 
-        Destroy(gameObject);
+        shockReference = Instantiate(shockParticle, mainCollider.transform.position, transform.rotation);
+        shockReference.transform.parent = gameObject.transform;
+        if (enemyType == EnemyType.Droideka)
+        {
+            shockReference.transform.Translate(0, 0.05f, 0);
+        }
+        shockReference.GetComponent<ParticleSystem>().Play();
+        Destroy(shockReference, .5f);
+
+        
+        if (enemyType == EnemyType.Droideka)
+        {
+            Destroy(gameObject, .5f);
+        }
+        else
+        {
+            Destroy(gameObject, 1.5f);
+        }
+        
+        //Destroy(gameObject, .5f);
+        
 
     }
 
@@ -168,12 +209,17 @@ public class EnemyBehavior : MonoBehaviour
     public void Shock(float newSpeed, float shockTime)
     {
         currentSpeed = newSpeed;
+        shockReference = Instantiate(shockParticle, mainCollider.transform.position, transform.rotation);
+        shockReference.transform.parent = gameObject.transform;
+        shockReference.transform.Translate(0, 0.05f, 0);
+        shockReference.GetComponent<ParticleSystem>().Play();
         StartCoroutine(Unshock(shockTime));
     }
 
     IEnumerator Unshock(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        Destroy(shockReference);
         currentSpeed = speed;
     }
 }

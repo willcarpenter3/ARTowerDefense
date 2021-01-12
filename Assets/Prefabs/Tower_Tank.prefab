@@ -118,10 +118,12 @@ MonoBehaviour:
   laserSpawn: {fileID: 861457276636138448}
   laserPrefab: {fileID: 1173424976658330268, guid: 244f39657c0445a4ba0f9c1e9f00b42a, type: 3}
   shockParticle: {fileID: 7215842556815205257}
+  explosionParticle: {fileID: 2067143678599553244, guid: 465d3be66e5da2f4aa5eadbed395114b, type: 3}
   aoeRadius: 0.3
   aoeDamage: 5
   shockTime: 2
   shockSpeed: 0
+  animator: {fileID: 0}
 --- !u!120 &3874412221548634500
 LineRenderer:
   m_ObjectHideFlags: 0

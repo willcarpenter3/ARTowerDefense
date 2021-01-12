@@ -398,6 +398,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   currentIndex: 0
+  shockParticle: {fileID: 1337937998198740053, guid: 13732c24bc9b2ba41ab11d8142714bde, type: 3}
 --- !u!95 &632998893596962951
 Animator:
   serializedVersion: 3

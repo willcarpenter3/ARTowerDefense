@@ -4993,6 +4993,7 @@ MonoBehaviour:
   laserSpawn: {fileID: 5362354234739666008}
   laserPrefab: {fileID: 1173424976658330268, guid: 5dfc1d59eae6c98499d1b27241b1e315, type: 3}
   shockParticle: {fileID: 2743063735443300524}
+  explosionParticle: {fileID: 2067143678599553244, guid: 465d3be66e5da2f4aa5eadbed395114b, type: 3}
   aoeRadius: 10
   aoeDamage: 5
   shockTime: 4
