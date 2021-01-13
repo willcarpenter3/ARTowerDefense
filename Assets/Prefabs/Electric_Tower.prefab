@@ -4941,17 +4941,17 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6922793697723135513, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: 4874126678125670354, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: -6478536213147159724, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: 3780671244086486322, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: 3016479151454471876, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: -5605289326131794027, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: -4246479402191905792, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: 725804396391725484, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: -2813337366143557646, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: 7498461928983958705, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
-  - {fileID: 7993982598810627253, guid: 8a95e8743f16e424184d6ff044a380ac, type: 3}
+  - {fileID: 2100000, guid: fd27371e981bd9a4b9288ab8136dee2d, type: 2}
+  - {fileID: 2100000, guid: 1c5e1a339b1fd9a4eb8be4833bea9f8a, type: 2}
+  - {fileID: 2100000, guid: aeb48816cb93eaa4a96e2f9b9aecaf95, type: 2}
+  - {fileID: 2100000, guid: 2a8e02e3be106954f9f53443ad8d2513, type: 2}
+  - {fileID: 2100000, guid: 5425ef1152417c6479cdac2127194b7d, type: 2}
+  - {fileID: 2100000, guid: a9ed97a88a403774e8905ade8fdca45c, type: 2}
+  - {fileID: 2100000, guid: 5013214f0d2abdc438285b20f814615a, type: 2}
+  - {fileID: 2100000, guid: 5f33f1db1e91e6941a3f78acd96d1780, type: 2}
+  - {fileID: 2100000, guid: f4b65afcc730ee74d8f0ef3bb80b3eda, type: 2}
+  - {fileID: 2100000, guid: e5a2f805da36b3a4da7e8675f3bc04f0, type: 2}
+  - {fileID: 2100000, guid: 2bc36995ff7889040a7155074e056015, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4991,6 +4991,7 @@ MonoBehaviour:
   damage: 2
   radiusParticle: {fileID: 5362354234511041541}
   laserSpawn: {fileID: 5362354234739666008}
+  altLaserSpawn: {fileID: 0}
   laserPrefab: {fileID: 1173424976658330268, guid: 5dfc1d59eae6c98499d1b27241b1e315, type: 3}
   shockParticle: {fileID: 2743063735443300524}
   explosionParticle: {fileID: 2067143678599553244, guid: 465d3be66e5da2f4aa5eadbed395114b, type: 3}

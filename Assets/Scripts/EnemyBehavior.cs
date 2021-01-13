@@ -141,11 +141,15 @@ public class EnemyBehavior : MonoBehaviour
         {
             shockReference.transform.Translate(0, 0.05f, 0);
         }
+        else if (enemyType == EnemyType.B2)
+        {
+            shockReference.transform.Translate(0, 0.1f, 0);
+        }
         shockReference.GetComponent<ParticleSystem>().Play();
         Destroy(shockReference, .5f);
 
         
-        if (enemyType == EnemyType.Droideka)
+        if (enemyType == EnemyType.Droideka || enemyType == EnemyType.B2)
         {
             Destroy(gameObject, .5f);
         }
