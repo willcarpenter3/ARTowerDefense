@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Objective
   m_EditorClassIdentifier: 
   structureName: Objective
-  prefab: {fileID: 3200654459434579965, guid: d5400e318138d23469d9d77555c6180c, type: 3}
+  prefab: {fileID: 1711567987697615887, guid: 92a154bdfa912b4469e2eaffec69a598, type: 3}
   image: {fileID: 21300000, guid: 781ee5bf64a618d498a3ad240d4ea02f, type: 3}
