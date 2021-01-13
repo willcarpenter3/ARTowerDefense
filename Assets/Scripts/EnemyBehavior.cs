@@ -133,10 +133,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             rb.isKinematic = false;
         }
-        if (GameManager.Instance() != null)
-        {
-            GameManager.Instance().Invoke("checkWin", 0.1f);
-        }
+        
 
         shockReference = Instantiate(shockParticle, mainCollider.transform.position, transform.rotation);
         shockReference.transform.parent = gameObject.transform;
@@ -156,9 +153,13 @@ public class EnemyBehavior : MonoBehaviour
         {
             Destroy(gameObject, 1.5f);
         }
-        
+
         //Destroy(gameObject, .5f);
-        
+        if (GameManager.Instance() != null)
+        {
+            GameManager.Instance().Invoke("checkWin", 0.5f);
+        }
+        Destroy(this);
 
     }
 
