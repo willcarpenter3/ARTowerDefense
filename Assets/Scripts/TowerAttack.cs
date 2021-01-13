@@ -17,6 +17,7 @@ public class TowerAttack : MonoBehaviour
     public GameObject laserSpawn;
     public GameObject laserPrefab;
     public ParticleSystem shockParticle;
+    public ParticleSystem explosionParticle;
 
     [Header("Tank Settings")]
     public float aoeRadius = 10f;
@@ -138,6 +139,13 @@ public class TowerAttack : MonoBehaviour
             // Deal area of effect damage
             if (towerType == TowerType.Tank)
             {
+                //Play explosion particle
+                ParticleSystem explosionReference = Instantiate(explosionParticle, targetEnemy.transform.position, targetEnemy.transform.rotation);
+                var main = explosionReference.main;
+                main.startSize = aoeRadius * 2;
+                explosionReference.Play();
+                Destroy(explosionReference, 2f);
+                //Do damage
                 Array.Clear(aoeColliders, 0, aoeColliders.Length);
                 int numColliders = Physics.OverlapSphereNonAlloc(targetEnemy.transform.position, aoeRadius, aoeColliders);
                 for (int i = 0; i < numColliders; i++)
