@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2921264126324328828}
   - component: {fileID: 2921264126324328829}
   m_Layer: 0
-  m_Name: Spawn_Droideka
+  m_Name: Spawn_B2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 262098705b7a74c4fb0df6b8a34a05a9, type: 2}
+  - {fileID: 2100000, guid: 9bbdbda29f1c2d447ae0d23fe27eabdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,10 +111,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesToSpawn: 10
   startDelay: 1
-  delay: 2
+  delay: 1
   waypoints: []
-  enemyPrefab: {fileID: 632998893596962949, guid: 8ed2b84e15764004ca4870a6cda5492e, type: 3}
+  enemyPrefab: {fileID: 8837127971661353273, guid: 14c709a18bb7fc0459b4bb5652901f0e, type: 3}
   started: 0
   empty: 0
-  enemyType: 2
+  enemyType: 1
   lineMaterial: {fileID: 2100000, guid: 68214663a70a4ec4d8c5f16c4168c322, type: 2}
