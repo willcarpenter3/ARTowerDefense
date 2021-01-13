@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 730939724}
   m_HandleRect: {fileID: 730939723}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3639,7 +3639,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1902128482}
   m_HandleRect: {fileID: 1902128481}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6155,6 +6155,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 730cf7c794fd146439a856b8e1d1eb3d, type: 2}
   spawnerStructures:
   - {fileID: 11400000, guid: f329fa9e949a7984ebec77843b3422e1, type: 2}
+  - {fileID: 11400000, guid: f66137a687553b44185e379ab3aca762, type: 2}
   - {fileID: 11400000, guid: e33b0cfd1a6377e4cbe059edb06fb424, type: 2}
   pathingStructures:
   - {fileID: 11400000, guid: 6d69608a21145764c9a1584313da85f2, type: 2}
@@ -6167,6 +6168,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
   buttonPrefab: {fileID: 8435981419899211649, guid: b11bb8c0a2f1e9940816736fab0c8759, type: 3}
   contentWindow: {fileID: 810441748}
+  selectedStructure: {fileID: 0}
 --- !u!1 &1902128480
 GameObject:
   m_ObjectHideFlags: 0
