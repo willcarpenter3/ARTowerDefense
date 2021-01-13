@@ -15,6 +15,7 @@ public class TowerAttack : MonoBehaviour
     [Header("Visual Settings")]
     public ParticleSystem radiusParticle;
     public GameObject laserSpawn;
+    public GameObject altLaserSpawn;
     public GameObject laserPrefab;
     public ParticleSystem shockParticle;
     public ParticleSystem explosionParticle;
@@ -36,6 +37,7 @@ public class TowerAttack : MonoBehaviour
     // Max detection of 250 enemies at a time
     private readonly Collider[] hitColliders = new Collider[250];
     private Vector3 targetRotation;
+    private Vector3 altTargetRotation;
     private readonly Collider[] aoeColliders = new Collider[250];
 
     
@@ -127,7 +129,7 @@ public class TowerAttack : MonoBehaviour
                 animator.SetBool("isShooting", true);
             }
 
-            if (towerType == TowerType.Sniper)
+            if (towerType == TowerType.Sniper || towerType == TowerType.Tank)
             {
                 animator.SetTrigger("shootTrigger");
             }
@@ -135,6 +137,11 @@ public class TowerAttack : MonoBehaviour
             // Spawn a laser that gets sent towards the target
             targetRotation = targetEnemy.transform.position - laserSpawn.transform.position;
             Instantiate(laserPrefab, laserSpawn.transform.position, Quaternion.LookRotation(targetRotation, Vector3.up));
+            if (towerType == TowerType.Tank)
+            {
+                altTargetRotation = targetEnemy.transform.position - altLaserSpawn.transform.position;
+                Instantiate(laserPrefab, altLaserSpawn.transform.position, Quaternion.LookRotation(altTargetRotation, Vector3.up));
+            }
 
             // Deal area of effect damage
             if (towerType == TowerType.Tank)
