@@ -60,3 +60,5 @@ crashlytics-build.properties
 
 
 Assets/GoogleARCore/SDK/Plugins/customized_manifest.aar
+
+Assets/GoogleARCore/SDK/Plugins/keyless_authentication.aar.meta
