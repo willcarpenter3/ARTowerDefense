@@ -991,7 +991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 138578373046952187, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
@@ -2091,7 +2091,7 @@ PrefabInstance:
     - target: {fileID: 2921264126324328829, guid: c294d62c6573dc345840f3a1e6dde12a, type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1293546976}
+      objectReference: {fileID: 1138136443}
     - target: {fileID: 2921264126324328830, guid: c294d62c6573dc345840f3a1e6dde12a, type: 3}
       propertyPath: m_Name
       value: Spawn_B2
@@ -3118,7 +3118,7 @@ PrefabInstance:
     - target: {fileID: 2921264126324328829, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1293546976}
+      objectReference: {fileID: 1138136443}
     - target: {fileID: 2921264126324328830, guid: dcdfa0ad784950d4398fa0854c84dcd6, type: 3}
       propertyPath: m_Name
       value: Spawn_Droideka
@@ -3287,6 +3287,11 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1010315931856893974, guid: 1743de3df381c6540b1a8b1cf6d3d2e9, type: 3}
   m_PrefabInstance: {fileID: 5362354234146352623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1138136443 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 7694643789553319097, guid: 92a154bdfa912b4469e2eaffec69a598, type: 3}
+  m_PrefabInstance: {fileID: 1711567988752248546}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1141886602
 GameObject:
@@ -3747,11 +3752,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!135 &1293546976 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 1711567987629628162, guid: 92a154bdfa912b4469e2eaffec69a598, type: 3}
-  m_PrefabInstance: {fileID: 1711567988752248546}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1311268378
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,7 +5154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 138578373046952187, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
@@ -5378,7 +5378,7 @@ PrefabInstance:
     - target: {fileID: 2921264126324328829, guid: 5a9704fd4b0bc3947acb3fab20fb2eea, type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1293546976}
+      objectReference: {fileID: 1138136443}
     - target: {fileID: 2921264126324328830, guid: 5a9704fd4b0bc3947acb3fab20fb2eea, type: 3}
       propertyPath: m_Name
       value: Spawn_B1
@@ -6348,7 +6348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6055090641047069809, guid: 1743de3df381c6540b1a8b1cf6d3d2e9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1743de3df381c6540b1a8b1cf6d3d2e9, type: 3}
