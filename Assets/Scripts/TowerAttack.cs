@@ -117,6 +117,17 @@ public class TowerAttack : MonoBehaviour
         {
             targetEnemy = null;
         }
+
+        //Handle turning off the radius particle during the play phase
+        if (GameManager.Instance().gamePhase == Phase.Playing)
+        {
+            radiusParticle.Stop();
+        }
+        else if (radiusParticle.isStopped)
+        {
+            radiusParticle.Play();
+        }
+
     }
 
     public void Attack()
