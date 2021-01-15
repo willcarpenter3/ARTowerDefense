@@ -163,12 +163,12 @@ public class GameManager : MonoBehaviour
                 structureMenu.ChangeMenu(structureMenu.playingStructures);
                 phaseDesc.text = "Will the enemies get defeated before they destroy the objective?";
                 confirmButton.SetActive(false);
-                //phaseDesc.gameObject.transform.parent.gameObject.SetActive(false);
-                //structureMenu.gameObject.SetActive(false);
+                phaseDesc.gameObject.transform.parent.gameObject.SetActive(false);
+                structureMenu.gameObject.SetActive(false);
                 break;
             case Phase.Playing:
-                //structureMenu.gameObject.SetActive(true);
-                //phaseDesc.gameObject.transform.parent.gameObject.SetActive(true);
+                structureMenu.gameObject.SetActive(true);
+                phaseDesc.gameObject.transform.parent.gameObject.SetActive(true);
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
