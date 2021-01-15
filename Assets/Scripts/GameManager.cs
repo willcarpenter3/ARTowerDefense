@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
                 {
                     spawn.ResetSpawner();
                 }
-                GetNumEnemies();
                 nextPhase();
                 debug.text = "Round Number: " + roundNumber;
             }
@@ -160,6 +159,7 @@ public class GameManager : MonoBehaviour
                 break;
             case Phase.TowerPlacing:
                 gamePhase = Phase.Playing;
+                GetNumEnemies();
                 structureMenu.ChangeMenu(structureMenu.playingStructures);
                 phaseDesc.text = "Will the enemies get defeated before they destroy the objective?";
                 confirmButton.SetActive(false);
