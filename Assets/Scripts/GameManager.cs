@@ -154,6 +154,7 @@ public class GameManager : MonoBehaviour
                 confirmButton.GetComponentInChildren<Text>().text = "Next Path";
                 break;
             case Phase.Pathing:
+                addAllowanceFirstRound();
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
@@ -162,14 +163,6 @@ public class GameManager : MonoBehaviour
                 confirmButton.GetComponentInChildren<Text>().text = "Start Battle";
                 break;
             case Phase.TowerPlacing:
-                if (roundNumber == 1)
-                {
-                    addAllowanceFirstRound();
-                }
-                else
-                {
-                    addAllowanceRound();
-                }
                 gamePhase = Phase.Playing;
                 GetNumEnemies();
                 structureMenu.ChangeMenu(structureMenu.playingStructures);
@@ -179,6 +172,7 @@ public class GameManager : MonoBehaviour
                 structureMenu.gameObject.SetActive(false);
                 break;
             case Phase.Playing:
+                addAllowanceRound();
                 structureMenu.gameObject.SetActive(true);
                 phaseDesc.gameObject.transform.parent.gameObject.SetActive(true);
                 gamePhase = Phase.TowerPlacing;
@@ -268,7 +262,7 @@ public class GameManager : MonoBehaviour
     private void addAllowanceRound()
     {
         //numCredits += spawners.Count * 10;
-        numCredits += roundNumber * 10;
+        numCredits += (roundNumber - 1) * 10;
     }
 
     private void addAllowanceFirstRound()
