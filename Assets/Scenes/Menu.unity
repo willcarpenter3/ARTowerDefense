@@ -503,6 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e92836244d0ea418439ff5af237404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: 1
 --- !u!1 &133282988
 GameObject:
   m_ObjectHideFlags: 0
@@ -32024,6 +32025,7 @@ MonoBehaviour:
   waypoints: []
   currentIndex: 0
   shockParticle: {fileID: 1337937998198740053, guid: 13732c24bc9b2ba41ab11d8142714bde, type: 3}
+  target: {fileID: 0}
 --- !u!95 &8808619899034512851
 Animator:
   serializedVersion: 3

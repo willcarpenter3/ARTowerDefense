@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class UIBehaviors : MonoBehaviour
 {
+    public ScreenOrientation orientation;
+
+    private void Start()
+    {
+        Screen.orientation = orientation;
+    }
+
     public void ActivateObject(GameObject other)
     {
         other.SetActive(true);
