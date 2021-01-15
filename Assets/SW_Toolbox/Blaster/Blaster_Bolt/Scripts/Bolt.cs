@@ -27,13 +27,13 @@ public class Bolt : MonoBehaviour
         Destroy(gameObject, 2f);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         if (canDamage)
         {
-            if (!ogBlaster.transform.IsChildOf(collision.collider.gameObject.transform))
+            if (!ogBlaster.transform.IsChildOf(collider.gameObject.transform))
             {
-                MonoBehaviour[] list = collision.collider.gameObject.GetComponents<MonoBehaviour>();
+                MonoBehaviour[] list = collider.gameObject.GetComponents<MonoBehaviour>();
                 foreach (MonoBehaviour mb in list)
                 {
                     if (mb is IDamageable)
@@ -53,7 +53,7 @@ public class Bolt : MonoBehaviour
         else
         {
             Debug.Log("Collisioned");
-            if (collision.collider.gameObject.CompareTag("follow") || collision.collider.gameObject.CompareTag("corpse"))
+            if (collider.gameObject.CompareTag("follow") || collider.gameObject.CompareTag("corpse"))
             {
                 Debug.Log("Follow tag found");
                 //GameObject explosion = Instantiate(collisionExplosion, transform.position, transform.rotation);
