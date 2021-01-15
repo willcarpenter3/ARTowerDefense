@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7541f22bc1f37f4db6304f572052865, type: 3}
   m_Name: S_B1
   m_EditorClassIdentifier: 
-  structureName: B1 Battledroid Spawner
+  structureName: B1 Spawner
   prefab: {fileID: 2921264126324328830, guid: 5a9704fd4b0bc3947acb3fab20fb2eea, type: 3}
   image: {fileID: 21300000, guid: 6e570b9699ef05744b2e1c691aeb02f9, type: 3}
+  cost: 0

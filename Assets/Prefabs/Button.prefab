@@ -426,6 +426,7 @@ MonoBehaviour:
   toggle: {fileID: 3623636653242237741}
   costTxt: {fileID: 6562398136585309372}
   nameTxt: {fileID: 2572495569084650737}
+  creditSymbol: {fileID: 8843383555792401441}
 --- !u!1 &8843383555792401441
 GameObject:
   m_ObjectHideFlags: 0
