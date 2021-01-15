@@ -8,5 +8,5 @@ public class Structure : ScriptableObject
     public string structureName;
     public GameObject prefab;
     public Sprite image;
-
+    public int cost;
 }

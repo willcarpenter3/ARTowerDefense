@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject confirmButton;
 
+    public int numCredits;
+
+    private int roundAllowanceMultiplier = 1;
+
     private GameObject currentSelectedEffect;
 
     //Round Logic
@@ -150,6 +154,7 @@ public class GameManager : MonoBehaviour
                 confirmButton.GetComponentInChildren<Text>().text = "Next Path";
                 break;
             case Phase.Pathing:
+                addAllowanceFirstRound();
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
@@ -167,6 +172,7 @@ public class GameManager : MonoBehaviour
                 structureMenu.gameObject.SetActive(false);
                 break;
             case Phase.Playing:
+                addAllowanceRound();
                 structureMenu.gameObject.SetActive(true);
                 phaseDesc.gameObject.transform.parent.gameObject.SetActive(true);
                 gamePhase = Phase.TowerPlacing;
@@ -234,5 +240,33 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void addAllowanceEnemy(EnemyBehavior.EnemyType type)
+    {
+        if (type == EnemyBehavior.EnemyType.B1)
+        {
+            numCredits += 1;
+        }
+        else if (type == EnemyBehavior.EnemyType.B2)
+        {
+            numCredits += 2;
+        }
+        else if (type == EnemyBehavior.EnemyType.Droideka)
+        {
+            numCredits += 5;
+        }
+
+    }
+
+    private void addAllowanceRound()
+    {
+        //numCredits += spawners.Count * 10;
+        numCredits += (roundNumber - 1) * 10;
+    }
+
+    private void addAllowanceFirstRound()
+    {
+        numCredits += spawners.Count * 15;
     }
 }

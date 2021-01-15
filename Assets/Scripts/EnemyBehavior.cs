@@ -164,6 +164,7 @@ public class EnemyBehavior : MonoBehaviour
         if (GameManager.Instance() != null)
         {
             GameManager.Instance().Invoke("checkWin", 0.5f);
+            GameManager.Instance().addAllowanceEnemy(enemyType);
         }
         Destroy(this);
 
