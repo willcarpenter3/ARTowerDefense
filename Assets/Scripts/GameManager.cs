@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     private int roundNumber = 1;
 
+    public int enemiesThisRound;
+
     //Singleton Game Manager Logic
     public static GameManager instance;
 
@@ -68,9 +70,10 @@ public class GameManager : MonoBehaviour
 
     public void checkWin()
     {
+        /*
         foreach (EnemySpawner spawn in spawners)
         {
-            if (!spawn.empty)
+            if (!spawn.empty && spawn.started)
             {
                 return;
             }
@@ -79,28 +82,33 @@ public class GameManager : MonoBehaviour
         if (FindObjectsOfType<EnemyBehavior>().Length > 0)
         {
             return;
-        }
+        }*/
 
-        if (roundNumber == roundsToWin)
+        enemiesThisRound--;
+
+        Debug.Log("Yeeting Enemy");
+
+        if (enemiesThisRound <= 0)
         {
-            //Win the game and either quit or jump into endless mode
-            gameWin();
-        }
-        else
-        {
-            //Reset Spawners
-            foreach (EnemySpawner spawn in spawners)
+            if (roundNumber == roundsToWin)
             {
-                spawn.ResetSpawner();
+                //Win the game and either quit or jump into endless mode
+                gameWin();
             }
-
-
-            //Advance to the next round
-            roundNumber++;
-            nextPhase();
-            debug.text = "Round Number: " + roundNumber;
+            else
+            {
+                //Advance to the next round
+                roundNumber++;
+                //Reset Spawners
+                foreach (EnemySpawner spawn in spawners)
+                {
+                    spawn.ResetSpawner();
+                }
+                GetNumEnemies();
+                nextPhase();
+                debug.text = "Round Number: " + roundNumber;
+            }
         }
-        
     }
 
     public void addSpawner(EnemySpawner e)
@@ -172,6 +180,11 @@ public class GameManager : MonoBehaviour
         addSelectedEffect();
     }
 
+    public int getRoundNumber()
+    {
+        return roundNumber;
+    }
+
     private void addSelectedEffect()
     {
         currentSelectedEffect = Instantiate(selectedEffect, spawners[spawnerIndex].gameObject.transform);
@@ -181,5 +194,15 @@ public class GameManager : MonoBehaviour
     {
         Destroy(currentSelectedEffect);
         currentSelectedEffect = null;
+    }
+
+    private void GetNumEnemies()
+    {
+        enemiesThisRound = 0;
+        foreach (EnemySpawner spawn in spawners)
+        {
+            Debug.Log("Adding " + spawn.getNumEnemies() + "from spawner");
+            enemiesThisRound += spawn.getNumEnemies(); 
+        }
     }
 }

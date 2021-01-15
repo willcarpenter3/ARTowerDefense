@@ -146,11 +146,11 @@ public class TowerAttack : MonoBehaviour
             }
             
             // Spawn a laser that gets sent towards the target
-            targetRotation = targetEnemy.transform.position - laserSpawn.transform.position;
+            targetRotation = targetEnemy.GetComponent<EnemyBehavior>().target.transform.position - laserSpawn.transform.position;
             Instantiate(laserPrefab, laserSpawn.transform.position, Quaternion.LookRotation(targetRotation, Vector3.up));
             if (towerType == TowerType.Tank)
             {
-                altTargetRotation = targetEnemy.transform.position - altLaserSpawn.transform.position;
+                altTargetRotation = targetEnemy.GetComponent<EnemyBehavior>().target.transform.position - altLaserSpawn.transform.position;
                 Instantiate(laserPrefab, altLaserSpawn.transform.position, Quaternion.LookRotation(altTargetRotation, Vector3.up));
             }
 
@@ -162,7 +162,7 @@ public class TowerAttack : MonoBehaviour
                 var main = explosionReference.main;
                 main.startSize = aoeRadius * 2;
                 explosionReference.Play();
-                Destroy(explosionReference, 2f);
+                Destroy(explosionReference.gameObject, 2f);
                 //Do damage
                 Array.Clear(aoeColliders, 0, aoeColliders.Length);
                 int numColliders = Physics.OverlapSphereNonAlloc(targetEnemy.transform.position, aoeRadius, aoeColliders);
