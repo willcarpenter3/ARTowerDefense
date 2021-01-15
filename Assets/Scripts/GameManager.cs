@@ -154,14 +154,6 @@ public class GameManager : MonoBehaviour
                 confirmButton.GetComponentInChildren<Text>().text = "Next Path";
                 break;
             case Phase.Pathing:
-                if (roundNumber == 1)
-                {
-                    addAllowanceFirstRound();
-                }
-                else
-                {
-                    addAllowanceRound();
-                }
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
@@ -170,6 +162,14 @@ public class GameManager : MonoBehaviour
                 confirmButton.GetComponentInChildren<Text>().text = "Start Battle";
                 break;
             case Phase.TowerPlacing:
+                if (roundNumber == 1)
+                {
+                    addAllowanceFirstRound();
+                }
+                else
+                {
+                    addAllowanceRound();
+                }
                 gamePhase = Phase.Playing;
                 GetNumEnemies();
                 structureMenu.ChangeMenu(structureMenu.playingStructures);
