@@ -2982,6 +2982,7 @@ MonoBehaviour:
   phaseDesc: {fileID: 232876879}
   structureMenu: {fileID: 2088589811}
   selectedEffect: {fileID: 4623712475414548718, guid: 1ee317b56d885a14ca67ce57e6a98bd4, type: 3}
+  confirmButton: {fileID: 606238357}
   roundsToWin: 15
   enemiesThisRound: 0
 --- !u!4 &962677117
