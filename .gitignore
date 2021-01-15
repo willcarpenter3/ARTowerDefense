@@ -62,3 +62,9 @@ crashlytics-build.properties
 Assets/GoogleARCore/SDK/Plugins/customized_manifest.aar
 
 Assets/GoogleARCore/SDK/Plugins/keyless_authentication.aar.meta
+
+Assets/arcore-unity-sdk-1.20.0.unitypackage.meta
+
+Assets/GoogleARCore/SDK/InstantPreview/Scripts/InstantPreview.apk.meta
+
+Assets/Grievous.unitypackage.meta

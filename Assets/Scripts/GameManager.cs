@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject selectedEffect;
 
+    public GameObject confirmButton;
+
     private GameObject currentSelectedEffect;
 
     //Round Logic
@@ -60,11 +62,13 @@ public class GameManager : MonoBehaviour
 
     public void gameLoss()
     {
+        confirmButton.SetActive(false);
         losePanel.SetActive(true);
     }
 
     public void gameWin()
     {
+        confirmButton.SetActive(false);
         winPanel.SetActive(true);
     }
 
@@ -104,7 +108,6 @@ public class GameManager : MonoBehaviour
                 {
                     spawn.ResetSpawner();
                 }
-                GetNumEnemies();
                 nextPhase();
                 debug.text = "Round Number: " + roundNumber;
             }
@@ -136,29 +139,42 @@ public class GameManager : MonoBehaviour
                 gamePhase = Phase.SpawnerPlacing;
                 structureMenu.ChangeMenu(structureMenu.spawnerStructures);
                 phaseDesc.text = "Place spawners for the different enemy types";
+                confirmButton.SetActive(true);
+                confirmButton.GetComponentInChildren<Text>().text = "Begin Pathing";
                 break;
             case Phase.SpawnerPlacing:
                 gamePhase = Phase.Pathing;
                 structureMenu.ChangeMenu(structureMenu.pathingStructures);
                 phaseDesc.text = "Place waypoints for the path of the designated spawner's enemies";
                 addSelectedEffect();
+                confirmButton.GetComponentInChildren<Text>().text = "Next Path";
                 break;
             case Phase.Pathing:
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
+                hideWaypoints();
                 removeSelectedEffect();
+                confirmButton.GetComponentInChildren<Text>().text = "Start Battle";
                 break;
             case Phase.TowerPlacing:
                 gamePhase = Phase.Playing;
+                GetNumEnemies();
                 structureMenu.ChangeMenu(structureMenu.playingStructures);
                 phaseDesc.text = "Will the enemies get defeated before they destroy the objective?";
+                confirmButton.SetActive(false);
+                phaseDesc.gameObject.transform.parent.gameObject.SetActive(false);
+                structureMenu.gameObject.SetActive(false);
                 break;
             case Phase.Playing:
+                structureMenu.gameObject.SetActive(true);
+                phaseDesc.gameObject.transform.parent.gameObject.SetActive(true);
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
-                removeSelectedEffect();
+                //removeSelectedEffect();
+                confirmButton.SetActive(true);
+                confirmButton.GetComponentInChildren<Text>().text = "Next Round";
                 break;
             default:
                 gamePhase = Phase.PlaneSelection;
@@ -203,6 +219,20 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Adding " + spawn.getNumEnemies() + "from spawner");
             enemiesThisRound += spawn.getNumEnemies(); 
+        }
+    }
+
+    private void hideWaypoints()
+    {
+        foreach (EnemySpawner spawner in spawners)
+        {
+            foreach (Collider waypoint in spawner.waypoints)
+            {
+                if (waypoint.gameObject.CompareTag("waypoint"))
+                {
+                    waypoint.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+                }
+            }
         }
     }
 }
