@@ -181,7 +181,6 @@ public class GameManager : MonoBehaviour
             case Phase.Playing:
                 structureMenu.gameObject.SetActive(true);
                 phaseDesc.gameObject.transform.parent.gameObject.SetActive(true);
-                addAllowanceEnemy();
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
@@ -249,25 +248,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void addAllowanceEnemy()
+    public void addAllowanceEnemy(EnemyBehavior.EnemyType type)
     {
-        foreach (var spawner in spawners)
+        if (type == EnemyBehavior.EnemyType.B1)
         {
-            if (spawner.enemyType == EnemyBehavior.EnemyType.B1)
-            {
-                numCredits += spawner.numEnemies * 1;
-            }
-            else if (spawner.enemyType == EnemyBehavior.EnemyType.B2)
-            {
-                numCredits += spawner.numEnemies * 2;
-            }
-            else if (spawner.enemyType == EnemyBehavior.EnemyType.Droideka)
-            {
-                numCredits += spawner.numEnemies * 5;
-            }
+            numCredits += 1;
         }
+        else if (type == EnemyBehavior.EnemyType.B2)
+        {
+            numCredits += 2;
+        }
+        else if (type == EnemyBehavior.EnemyType.Droideka)
+        {
+            numCredits += 5;
+        }
+
     }
-    
+
     private void addAllowanceRound()
     {
         //numCredits += spawners.Count * 10;
