@@ -147,6 +147,7 @@ public class GameManager : MonoBehaviour
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
+                hideWaypoints();
                 removeSelectedEffect();
                 break;
             case Phase.TowerPlacing:
@@ -203,6 +204,20 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Adding " + spawn.getNumEnemies() + "from spawner");
             enemiesThisRound += spawn.getNumEnemies(); 
+        }
+    }
+
+    private void hideWaypoints()
+    {
+        foreach (EnemySpawner spawner in spawners)
+        {
+            foreach (Collider waypoint in spawner.waypoints)
+            {
+                if (waypoint.gameObject.CompareTag("waypoint"))
+                {
+                    waypoint.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+                }
+            }
         }
     }
 }
