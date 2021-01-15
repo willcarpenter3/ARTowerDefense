@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject confirmButton;
 
+    public int numCredits;
+
+    private int roundAllowanceMultiplier = 1;
+
     private GameObject currentSelectedEffect;
 
     //Round Logic
@@ -150,6 +154,14 @@ public class GameManager : MonoBehaviour
                 confirmButton.GetComponentInChildren<Text>().text = "Next Path";
                 break;
             case Phase.Pathing:
+                if (roundNumber == 1)
+                {
+                    addAllowanceFirstRound();
+                }
+                else
+                {
+                    addAllowanceRound();
+                }
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
@@ -169,6 +181,7 @@ public class GameManager : MonoBehaviour
             case Phase.Playing:
                 structureMenu.gameObject.SetActive(true);
                 phaseDesc.gameObject.transform.parent.gameObject.SetActive(true);
+                addAllowanceEnemy();
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
                 phaseDesc.text = "Place towers to defend your base!";
@@ -234,5 +247,35 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void addAllowanceEnemy()
+    {
+        foreach (var spawner in spawners)
+        {
+            if (spawner.enemyType == EnemyBehavior.EnemyType.B1)
+            {
+                numCredits += spawner.numEnemies * 1;
+            }
+            else if (spawner.enemyType == EnemyBehavior.EnemyType.B2)
+            {
+                numCredits += spawner.numEnemies * 2;
+            }
+            else if (spawner.enemyType == EnemyBehavior.EnemyType.Droideka)
+            {
+                numCredits += spawner.numEnemies * 5;
+            }
+        }
+    }
+    
+    private void addAllowanceRound()
+    {
+        //numCredits += spawners.Count * 10;
+        numCredits += roundNumber * 10;
+    }
+
+    private void addAllowanceFirstRound()
+    {
+        numCredits += spawners.Count * 15;
     }
 }

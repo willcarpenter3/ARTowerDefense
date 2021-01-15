@@ -15,3 +15,4 @@ MonoBehaviour:
   structureName: Electric Tower
   prefab: {fileID: 6055090641047069809, guid: 1743de3df381c6540b1a8b1cf6d3d2e9, type: 3}
   image: {fileID: 21300000, guid: bab71f08808890f44b212fc59b2e1a4b, type: 3}
+  cost: 40

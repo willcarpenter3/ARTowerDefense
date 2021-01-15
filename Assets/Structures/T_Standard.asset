@@ -15,3 +15,4 @@ MonoBehaviour:
   structureName: Standard Tower
   prefab: {fileID: 138578373046952187, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
   image: {fileID: 21300000, guid: a30548d3d5bca854fa9f1f7f759378a2, type: 3}
+  cost: 10
