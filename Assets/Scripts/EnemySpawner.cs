@@ -5,29 +5,41 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
+    //Public Fields
+    [Header("Spawner Settings")]
     public int enemiesToSpawn = 10;
 
-    private int numEnemies;
+    public int roundToStart = 1;
 
     public float startDelay = 1f;
 
-    public float delay = 2f;
+    public float spawnDelay = 2f;
 
-    public List<Collider> waypoints;
+    [Header("Type Information")]
 
     public GameObject enemyPrefab;
+
+    public EnemyBehavior.EnemyType enemyType;
+
+    public Material lineMaterial;
+
+    [Header("Status Information")]
 
     public bool started = false;
 
     public bool empty = false;
 
+    public List<Collider> waypoints;
+
+    //Private Fields
+
+    private int enemiesToAdd = 2;
+
+    public int numEnemies;
+
     private LineRenderer lineRenderer;
 
-    private GameObject line;
-
-    public EnemyBehavior.EnemyType enemyType;
-
-    public Material lineMaterial;
+    private GameObject line;    
 
     private void Start()
     {
@@ -43,14 +55,14 @@ public class EnemySpawner : MonoBehaviour
         {
             CancelInvoke();
             empty = true;
-            GameManager.Instance().checkWin();
+            //GameManager.Instance().checkWin();
         }
 
         //Code inspired by this snarky jackass
         //src: https://answers.unity.com/questions/314815/delay-a-prefab-instantiate.html
-        if (!started && GameManager.Instance().getGamePhase() == Phase.Playing)
+        if (!started && GameManager.Instance().getGamePhase() == Phase.Playing && GameManager.Instance().getRoundNumber() >= roundToStart)
         {
-            InvokeRepeating("SpawnEnemy", startDelay, delay);
+            InvokeRepeating("SpawnEnemy", startDelay, spawnDelay);
             //GameManager.Instance().debug.text = waypoints.Count.ToString();
             started = true;
         }
@@ -60,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Debug.Log("bruh");
-            GameManager.Instance().addSpawner(this);
+            //GameManager.Instance().addSpawner(this);
             GameManager.Instance().nextPhase(Phase.Playing);
         }
     }
@@ -82,9 +94,25 @@ public class EnemySpawner : MonoBehaviour
 
     public void ResetSpawner()
     {
-        started = false;
-        empty = false;
-        numEnemies = enemiesToSpawn;
+        if (GameManager.Instance().getRoundNumber() >= roundToStart)
+        {
+            started = false;
+            empty = false;
+            numEnemies = enemiesToSpawn + (enemiesToAdd * (GameManager.Instance().getRoundNumber() - roundToStart));
+        }
+    }
+
+    public int getNumEnemies()
+    {
+        //Don't report enemies until it is their time to go
+        if (GameManager.Instance().getRoundNumber() >= roundToStart)
+        {
+            return numEnemies;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     

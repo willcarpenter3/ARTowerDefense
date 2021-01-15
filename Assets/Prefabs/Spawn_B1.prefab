@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100004, guid: 669ee420d8ea8449f91df60d461f6e3d, type: 3}
+  - {fileID: 2100000, guid: 2eeb69c857eb01b4ba5877d49dda7f7c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,12 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64dea023116cf74bac1555fec83b298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesToSpawn: 10
+  enemiesToSpawn: 1
+  roundToStart: 1
   startDelay: 1
-  delay: 1
-  waypoints: []
+  spawnDelay: 2
   enemyPrefab: {fileID: 5190042245827617440, guid: 913c6e7f0dfd9cb46a0b19616f849440, type: 3}
-  started: 0
-  empty: 0
   enemyType: 0
   lineMaterial: {fileID: 2100000, guid: 68214663a70a4ec4d8c5f16c4168c322, type: 2}
+  started: 0
+  empty: 0
+  waypoints: []
