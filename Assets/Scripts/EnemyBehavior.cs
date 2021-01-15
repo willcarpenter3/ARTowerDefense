@@ -38,6 +38,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private GameObject shockReference; //Keep a local copy of whatever shock particle is active
 
+    public Transform target; //used for turrets when targeting 
+
     //Other fields
 
     private bool inObjectiveRange = false; //used to stop the enemy when it has reached its objective
@@ -196,6 +198,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             if (other == waypoints[currentIndex])
             {
+                Debug.Log("Entered Waypoint Range");
                 if (currentIndex < waypoints.Count - 1)
                 {
                     currentIndex++;
