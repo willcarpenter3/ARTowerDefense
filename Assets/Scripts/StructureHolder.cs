@@ -26,8 +26,7 @@ public class StructureHolder : MonoBehaviour
     {
         if (structure.cost > 0 && structure.cost > GameManager.Instance().numCredits)
         {
-            this.enabled = false;
-            toggle.isOn = false;
+            gameObject.SetActive(false);
         }
         else if (toggle.isOn)
         {
