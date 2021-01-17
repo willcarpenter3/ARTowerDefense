@@ -4832,6 +4832,7 @@ GameObject:
   - component: {fileID: 138578373046952186}
   - component: {fileID: 138578373046952185}
   - component: {fileID: 138578373046952184}
+  - component: {fileID: -9185894907544486461}
   m_Layer: 0
   m_Name: CloneTurret
   m_TagString: Untagged
@@ -4881,11 +4882,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: 0
-  radius: 0.5
+  radius: 0.175
   fireDelay: 0.25
   damage: 10
   radiusParticle: {fileID: 138578372269037192}
   laserSpawn: {fileID: 138578373608187866}
+  altLaserSpawn: {fileID: 0}
   laserPrefab: {fileID: 1173424976658330268, guid: 5dfc1d59eae6c98499d1b27241b1e315, type: 3}
   shockParticle: {fileID: 7897041499566848453}
   explosionParticle: {fileID: 2067143678599553244, guid: 465d3be66e5da2f4aa5eadbed395114b, type: 3}
@@ -4894,6 +4896,19 @@ MonoBehaviour:
   shockTime: 2
   shockSpeed: 0
   animator: {fileID: 5802538347301944889}
+--- !u!114 &-9185894907544486461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138578373046952187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba41979e60954946b2bae27a5d03320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  structure: {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
 --- !u!1 &138578373608187866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4977,15 +4992,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
       propertyPath: m_Name

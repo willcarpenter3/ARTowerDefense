@@ -145,7 +145,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if (enemyType == EnemyType.B2)
         {
-            shockReference.transform.Translate(0, 0.1f, 0);
+            shockReference.transform.Translate(0, 0.05f, 0);
         }
         shockReference.GetComponent<ParticleSystem>().Play();
         Destroy(shockReference, .5f);
@@ -215,20 +215,20 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    public void Shock(float newSpeed, float shockTime)
+    public void Shock(float multiplier, float shockTime)
     {
-        currentSpeed = newSpeed;
+        currentSpeed *= multiplier;
         shockReference = Instantiate(shockParticle, mainCollider.transform.position, transform.rotation);
         shockReference.transform.parent = gameObject.transform;
         shockReference.transform.Translate(0, 0.05f, 0);
         shockReference.GetComponent<ParticleSystem>().Play();
-        StartCoroutine(Unshock(shockTime));
+        Destroy(shockReference, shockTime);
+        StartCoroutine(Unshock(multiplier, shockTime));
     }
 
-    IEnumerator Unshock(float waitTime)
+    IEnumerator Unshock(float multiplier, float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        Destroy(shockReference);
-        currentSpeed = speed;
+        currentSpeed /= multiplier;
     }
 }

@@ -263,14 +263,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void addAllowanceRound()
+    public void addAllowanceRound()
     {
         //numCredits += spawners.Count * 10;
         numCredits += (roundNumber - 1) * 10;
     }
 
-    private void addAllowanceFirstRound()
+    public void addAllowanceFirstRound()
     {
         numCredits += spawners.Count * 15;
+    }
+
+    public void spendCredits(int cost)
+    {
+        numCredits -= cost;
     }
 }

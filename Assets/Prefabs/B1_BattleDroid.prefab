@@ -414,12 +414,12 @@ MonoBehaviour:
   enemyType: 0
   health: 20
   speed: 0.0025
-  target: {fileID: 270389062900979183}
   transparentMat: {fileID: 0}
   droidekaShield: {fileID: 0}
   waypoints: []
   currentIndex: 0
   shockParticle: {fileID: 1337937998198740053, guid: 13732c24bc9b2ba41ab11d8142714bde, type: 3}
+  target: {fileID: 270389062900979183}
 --- !u!54 &5986359070466660492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1368,15 +1368,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 645235578517526439, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalPosition.x
