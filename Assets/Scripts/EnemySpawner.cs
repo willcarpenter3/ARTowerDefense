@@ -37,6 +37,8 @@ public class EnemySpawner : MonoBehaviour
 
     public int numEnemies;
 
+    public float widthMultiplier = 0.0125f;
+
     private LineRenderer lineRenderer;
 
     private GameObject line;    
@@ -46,6 +48,8 @@ public class EnemySpawner : MonoBehaviour
         numEnemies = enemiesToSpawn;
 
         CreateLine();
+        AddPointToLine(waypoints[1].transform.position, 1);
+        AddPointToLine(waypoints[2].transform.position, 2);
 
     }
     // Update is called once per frame
@@ -124,9 +128,11 @@ public class EnemySpawner : MonoBehaviour
         line.transform.position = transform.position;
         line.AddComponent<LineRenderer>();
         lineRenderer = line.GetComponent<LineRenderer>();
-        lineRenderer.SetPosition(0, line.transform.position);
+        Vector3 spawnerPosition = line.transform.position;
+        //spawnerPosition.y -= 0.0001f;
+        lineRenderer.SetPosition(0, spawnerPosition);
         // Wide render
-        lineRenderer.widthMultiplier = 0.0125f;
+        lineRenderer.widthMultiplier = widthMultiplier;
         lineRenderer.material = lineMaterial;
         // Color based on spawner
         if (enemyType == EnemyBehavior.EnemyType.B1)
