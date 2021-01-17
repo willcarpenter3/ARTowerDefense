@@ -27,15 +27,11 @@ public class StructureHolder : MonoBehaviour
         if (structure.cost > 0 && structure.cost > GameManager.Instance().numCredits)
         {
             this.enabled = false;
+            toggle.isOn = false;
         }
-        if (toggle.isOn)
+        else if (toggle.isOn)
         {
             EventSystem.current.SetSelectedGameObject(this.gameObject);
-            if (structure.cost > 0)
-            {
-                GameManager.Instance().spendCredits(structure.cost);
-                EventSystem.current.SetSelectedGameObject(null);
-            }
         }
     }
 

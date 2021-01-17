@@ -92,6 +92,8 @@ namespace GoogleARCore.Examples.HelloAR
 
         private DetectedPlane _usablePlane;
 
+        public ObjectMenu objectMenu;
+
         /// <summary>
         /// The Unity Awake() method.
         /// </summary>
@@ -188,6 +190,13 @@ namespace GoogleARCore.Examples.HelloAR
 
                     // Instantiate prefab at the hit pose.
                     var gameObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation);
+                    if (prefab.GetComponent<TowerHolder>() != null)
+                    {
+                        GameManager.Instance().spendCredits(prefab.GetComponent<TowerHolder>().structure.cost);
+                        EventSystem.current.SetSelectedGameObject(null);
+                        objectMenu.SetSelectedStructure(null);
+                    }
+                    
 
                     if (GameManager.Instance().getGamePhase() == Phase.SpawnerPlacing && gameObject.GetComponent<EnemySpawner>() != null)
                     {
