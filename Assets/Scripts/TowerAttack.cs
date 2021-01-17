@@ -26,7 +26,7 @@ public class TowerAttack : MonoBehaviour
 
     [Header("Shock Settings")]
     public float shockTime = 2f;
-    public float shockSpeed = 0f;
+    public float shockMultiplier = 0f;
 
     [Header("Animation")]
     public Animator animator;
@@ -187,7 +187,7 @@ public class TowerAttack : MonoBehaviour
             {
                 if (enemy != null && enemy.tag == "follow")
                 {
-                    enemy.gameObject.GetComponent<EnemyBehavior>().Shock(shockSpeed, shockTime);
+                    enemy.gameObject.GetComponent<EnemyBehavior>().Shock(shockMultiplier, shockTime);
                     enemy.gameObject.GetComponent<EnemyBehavior>().Damage(damage);
                 }
             }

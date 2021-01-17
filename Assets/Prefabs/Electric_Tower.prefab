@@ -4998,7 +4998,7 @@ MonoBehaviour:
   aoeRadius: 10
   aoeDamage: 5
   shockTime: 4
-  shockSpeed: 0
+  shockMultiplier: 0.5
   animator: {fileID: 0}
 --- !u!1 &5362354234511041542
 GameObject:
