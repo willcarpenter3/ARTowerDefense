@@ -393,7 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 2
   health: 150
-  speed: 0.0035
+  speed: 0.002
   transparentMat: {fileID: 2100000, guid: 5043ea8770bf0404f9f8b97621ab531c, type: 2}
   droidekaShield: {fileID: 6924745743139350347}
   waypoints:
@@ -447,8 +447,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.086
-  m_Center: {x: 0, y: 0.04, z: 0.01}
+  m_Radius: 0.045
+  m_Center: {x: 0, y: 0.015, z: 0.0075}
 --- !u!1 &2638581299974958999
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,15 +532,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8123eb41b990ba7409b383b59dfdcbb8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8123eb41b990ba7409b383b59dfdcbb8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8123eb41b990ba7409b383b59dfdcbb8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -1670414678495180717, guid: 8123eb41b990ba7409b383b59dfdcbb8, type: 3}
       propertyPath: m_Materials.Array.data[3]

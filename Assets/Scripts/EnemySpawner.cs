@@ -126,7 +126,7 @@ public class EnemySpawner : MonoBehaviour
         lineRenderer = line.GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, line.transform.position);
         // Wide render
-        lineRenderer.widthMultiplier = 0.025f;
+        lineRenderer.widthMultiplier = 0.0125f;
         lineRenderer.material = lineMaterial;
         // Color based on spawner
         if (enemyType == EnemyBehavior.EnemyType.B1)

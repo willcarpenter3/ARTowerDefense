@@ -145,7 +145,7 @@ public class EnemyBehavior : MonoBehaviour
         }
         else if (enemyType == EnemyType.B2)
         {
-            shockReference.transform.Translate(0, 0.1f, 0);
+            shockReference.transform.Translate(0, 0.05f, 0);
         }
         shockReference.GetComponent<ParticleSystem>().Play();
         Destroy(shockReference, .5f);
