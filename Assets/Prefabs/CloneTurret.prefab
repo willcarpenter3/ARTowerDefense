@@ -4832,6 +4832,7 @@ GameObject:
   - component: {fileID: 138578373046952186}
   - component: {fileID: 138578373046952185}
   - component: {fileID: 138578373046952184}
+  - component: {fileID: -9185894907544486461}
   m_Layer: 0
   m_Name: CloneTurret
   m_TagString: Untagged
@@ -4895,6 +4896,19 @@ MonoBehaviour:
   shockTime: 2
   shockSpeed: 0
   animator: {fileID: 5802538347301944889}
+--- !u!114 &-9185894907544486461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138578373046952187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba41979e60954946b2bae27a5d03320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  structure: {fileID: 11400000, guid: a83d05ed61c955d44b19508c36368b72, type: 2}
 --- !u!1 &138578373608187866
 GameObject:
   m_ObjectHideFlags: 0
