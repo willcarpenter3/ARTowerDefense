@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
             case Phase.PlaneSelection:
                 gamePhase = Phase.ObjectivePlacing;
                 structureMenu.ChangeMenu(structureMenu.objectiveStructures);
-                phaseDesc.text = "Place your base (Choose wisely, you can only place one!)";
+                phaseDesc.text = "Place your transport vessel\n(You can only place one!)";
                 break;
             case Phase.ObjectivePlacing:
                 gamePhase = Phase.SpawnerPlacing;
@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
                 addAllowanceFirstRound();
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
-                phaseDesc.text = "Place towers to defend your base!";
+                phaseDesc.text = "Place towers to defend the transport!";
                 hideWaypoints();
                 removeSelectedEffect();
                 confirmButton.GetComponentInChildren<Text>().text = "Start Battle";
@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
                 phaseDesc.gameObject.transform.parent.gameObject.SetActive(true);
                 gamePhase = Phase.TowerPlacing;
                 structureMenu.ChangeMenu(structureMenu.towerStructures);
-                phaseDesc.text = "Place towers to defend your base!";
+                phaseDesc.text = "Place towers to defend the transport!";
                 //removeSelectedEffect();
                 confirmButton.SetActive(true);
                 confirmButton.GetComponentInChildren<Text>().text = "Next Round";
