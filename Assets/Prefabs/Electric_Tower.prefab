@@ -4907,7 +4907,7 @@ Transform:
   m_GameObject: {fileID: 5092305719087363871}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5362354234739666007}
   - {fileID: 2281893332446557951}
@@ -4986,7 +4986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: 3
-  radius: 0.3
+  radius: 0.1
   fireDelay: 10
   damage: 2
   radiusParticle: {fileID: 5362354234511041541}

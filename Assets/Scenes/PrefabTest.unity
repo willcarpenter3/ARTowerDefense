@@ -1100,7 +1100,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 138578373046952186, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.732
+      value: -45.946
       objectReference: {fileID: 0}
     - target: {fileID: 138578373046952186, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1108,7 +1108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 138578373046952186, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 29.311
+      value: 29.168
       objectReference: {fileID: 0}
     - target: {fileID: 138578373046952186, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2983,6 +2983,7 @@ MonoBehaviour:
   structureMenu: {fileID: 2088589811}
   selectedEffect: {fileID: 4623712475414548718, guid: 1ee317b56d885a14ca67ce57e6a98bd4, type: 3}
   confirmButton: {fileID: 606238357}
+  numCredits: 0
   roundsToWin: 15
   enemiesThisRound: 0
 --- !u!4 &962677117
@@ -5233,7 +5234,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 138578373046952186, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -45.612
+      value: -46.883
       objectReference: {fileID: 0}
     - target: {fileID: 138578373046952186, guid: 021ba90f91849f74586873c08e2b0917, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6334,7 +6335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 829972585972133181, guid: da4aca5f673248847838cf855778ddc3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 829972585972133181, guid: da4aca5f673248847838cf855778ddc3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

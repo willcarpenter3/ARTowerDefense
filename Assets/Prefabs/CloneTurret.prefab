@@ -4881,11 +4881,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: 0
-  radius: 0.5
+  radius: 0.175
   fireDelay: 0.25
   damage: 10
   radiusParticle: {fileID: 138578372269037192}
   laserSpawn: {fileID: 138578373608187866}
+  altLaserSpawn: {fileID: 0}
   laserPrefab: {fileID: 1173424976658330268, guid: 5dfc1d59eae6c98499d1b27241b1e315, type: 3}
   shockParticle: {fileID: 7897041499566848453}
   explosionParticle: {fileID: 2067143678599553244, guid: 465d3be66e5da2f4aa5eadbed395114b, type: 3}
@@ -4977,15 +4978,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.05
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69496b2659e252c4cbf9bf5a9b8c6377, type: 3}
       propertyPath: m_Name
