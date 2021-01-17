@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 524051958845484619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.074, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 8124154548014982255}
   - {fileID: 7621677677140962791}
@@ -4944,8 +4944,9 @@ GameObject:
   - component: {fileID: 829972585972133181}
   - component: {fileID: 829972585972133571}
   - component: {fileID: 829972585972133180}
+  - component: {fileID: 8305940845571771255}
   m_Layer: 0
-  m_Name: Tower_Tank 1
+  m_Name: Tank_Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4983,7 +4984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: 1
-  radius: 0.6
+  radius: 0.3
   fireDelay: 3
   damage: 75
   radiusParticle: {fileID: 829972584459820711}
@@ -5011,6 +5012,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerAttack: {fileID: 829972585972133571}
   rotationSpeed: 2
+--- !u!114 &8305940845571771255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829972585972133182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba41979e60954946b2bae27a5d03320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  structure: {fileID: 11400000, guid: 2c2727d17ba0ce344bf9a928cf07f589, type: 2}
 --- !u!1 &950051760174696274
 GameObject:
   m_ObjectHideFlags: 0

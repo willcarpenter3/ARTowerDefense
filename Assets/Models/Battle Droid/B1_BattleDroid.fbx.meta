@@ -44,11 +44,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|ArmatureAction.002 (1)
-      takeName: Armature|ArmatureAction.002
+      name: Armature|ArmatureAction
+      takeName: Armature|ArmatureAction
       internalID: 0
       firstFrame: 0
-      lastFrame: 32
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -113,7 +113,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
