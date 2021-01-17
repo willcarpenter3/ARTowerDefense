@@ -13,6 +13,7 @@ public class StructureHolder : MonoBehaviour
     public TMP_Text costTxt;
     public TMP_Text nameTxt;
     public GameObject creditSymbol;
+    public GameObject inactiveBox;
 
     public void SetSelectedStructure()
     {
@@ -26,8 +27,8 @@ public class StructureHolder : MonoBehaviour
     {
         if (structure.cost > 0 && structure.cost > GameManager.Instance().numCredits)
         {
-            toggle.isOn = false;
-            this.enabled = false;
+            toggle.enabled = false;
+            inactiveBox.SetActive(true);
         }
         else if (toggle.isOn)
         {
