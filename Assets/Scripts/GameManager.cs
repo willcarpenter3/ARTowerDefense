@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public Text debug;
 
+    public TMP_Text roundTxt;
+
     public Phase gamePhase = Phase.PlaneSelection;
 
     public List<EnemySpawner> spawners;
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
+        roundTxt.text = "Round " + roundNumber;
         //debug.text = "Num enemies: " + FindObjectsOfType<EnemyBehavior>().Length;
     }
 
@@ -94,7 +97,7 @@ public class GameManager : MonoBehaviour
 
         enemiesThisRound--;
 
-        Debug.Log("Yeeting Enemy");
+        //Debug.Log("Yeeting Enemy");
 
         if (enemiesThisRound <= 0)
         {
@@ -113,7 +116,8 @@ public class GameManager : MonoBehaviour
                     spawn.ResetSpawner();
                 }
                 nextPhase();
-                debug.text = "Round Number: " + roundNumber;
+                roundTxt.text = "Round " + roundNumber;
+                //debug.text = "Round Number: " + roundNumber;
             }
         }
     }
