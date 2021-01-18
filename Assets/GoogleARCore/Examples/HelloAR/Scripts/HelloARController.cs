@@ -193,10 +193,14 @@ namespace GoogleARCore.Examples.HelloAR
                     if (prefab.GetComponent<TowerHolder>() != null)
                     {
                         GameManager.Instance().spendCredits(prefab.GetComponent<TowerHolder>().structure.cost);
-                        EventSystem.current.SetSelectedGameObject(null);
-                        objectMenu.SetSelectedStructure(null);
+                        if (prefab.GetComponent<TowerHolder>().structure.cost > GameManager.Instance().numCredits)
+                        {
+                            EventSystem.current.SetSelectedGameObject(null);
+                            objectMenu.SetSelectedStructure(null);
+                        }
                     }
                     
+
 
                     if (GameManager.Instance().getGamePhase() == Phase.SpawnerPlacing && gameObject.GetComponent<EnemySpawner>() != null)
                     {
