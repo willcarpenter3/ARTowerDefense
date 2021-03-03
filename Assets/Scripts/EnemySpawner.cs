@@ -45,6 +45,8 @@ public class EnemySpawner : MonoBehaviour
     {
         numEnemies = enemiesToSpawn;
 
+        spawnDelay /= GameManager.Instance().difficultyMult_Spawn;
+
         CreateLine();
 
     }

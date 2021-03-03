@@ -4489,7 +4489,7 @@ MonoBehaviour:
   selectedEffect: {fileID: 4623712475414548718, guid: 1ee317b56d885a14ca67ce57e6a98bd4, type: 3}
   confirmButton: {fileID: 159580288}
   numCredits: 0
-  roundsToWin: 3
+  roundsToWin: 15
   enemiesThisRound: 0
 --- !u!4 &1362799555
 Transform:

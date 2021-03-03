@@ -9,6 +9,6 @@ public class UICredits : MonoBehaviour
     // FixedUpdate is called once per fixed time
     void FixedUpdate()
     {
-        gameObject.GetComponent<TMP_Text>().text = GameManager.instance.numCredits.ToString();
+        gameObject.GetComponent<TMP_Text>().text = GameManager.Instance().numCredits.ToString();
     }
 }

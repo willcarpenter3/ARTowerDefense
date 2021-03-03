@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     
     public EnemyType enemyType; //Type of this enemy
 
-    public int health = 100; //Health of this enemy unit
+    public float health = 100; //Health of this enemy unit
 
     private bool dead = false; //used to prevent ragdolling several times
 
@@ -58,7 +58,10 @@ public class EnemyBehavior : MonoBehaviour
     {
         mainCollider = GetComponent<Collider>();
         //mainRigidBody = GetComponent<Rigidbody>();
-        
+
+        health *= GameManager.Instance().difficultyMult_Health;
+        speed *= GameManager.Instance().difficultyMult_Speed;
+
         allColliders = gameObject.transform.GetChild(0).GetComponentsInChildren<Collider>(true);
         allRigidBodies = gameObject.transform.GetChild(0).GetComponentsInChildren<Rigidbody>(true);
 
