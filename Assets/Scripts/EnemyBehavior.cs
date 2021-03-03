@@ -54,13 +54,18 @@ public class EnemyBehavior : MonoBehaviour
 
     private Rigidbody[] allRigidBodies;
 
+    [HideInInspector]
+    public float roundToStart;
+
     private void Start()
     {
         mainCollider = GetComponent<Collider>();
         //mainRigidBody = GetComponent<Rigidbody>();
 
-        health *= GameManager.Instance().difficultyMult_Health;
-        speed *= GameManager.Instance().difficultyMult_Speed;
+        float roundOffsetMult_Health = GameManager.Instance().getRoundNumber() / (roundToStart - GameManager.Instance().difficultyMult_Health);
+        health *= GameManager.Instance().difficultyMult_Health * roundOffsetMult_Health;
+        float roundOffsetMult_Speed = GameManager.Instance().getRoundNumber() / (roundToStart - GameManager.Instance().difficultyMult_Speed);
+        speed *= GameManager.Instance().difficultyMult_Speed * roundOffsetMult_Speed;
 
         allColliders = gameObject.transform.GetChild(0).GetComponentsInChildren<Collider>(true);
         allRigidBodies = gameObject.transform.GetChild(0).GetComponentsInChildren<Rigidbody>(true);

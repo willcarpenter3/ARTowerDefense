@@ -39,13 +39,14 @@ public class EnemySpawner : MonoBehaviour
 
     private LineRenderer lineRenderer;
 
-    private GameObject line;    
+    private GameObject line;
 
     private void Start()
     {
         numEnemies = enemiesToSpawn;
 
-        spawnDelay /= GameManager.Instance().difficultyMult_Spawn;
+        float roundOffsetMult = GameManager.Instance().getRoundNumber() / (roundToStart - GameManager.Instance().difficultyMult_Spawn);
+        spawnDelay /= (GameManager.Instance().difficultyMult_Spawn * roundOffsetMult);
 
         CreateLine();
 
@@ -84,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
         //src: https://docs.unity3d.com/2019.3/Documentation/Manual/InstantiatingPrefabs.html
         GameObject instance = Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         instance.GetComponent<EnemyBehavior>().waypoints = waypoints;
+        instance.GetComponent<EnemyBehavior>().roundToStart = roundToStart;
         numEnemies--;
     }
 
