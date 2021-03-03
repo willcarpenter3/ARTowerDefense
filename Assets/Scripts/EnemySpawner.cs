@@ -45,7 +45,8 @@ public class EnemySpawner : MonoBehaviour
     {
         numEnemies = enemiesToSpawn;
 
-        float roundOffsetMult = GameManager.Instance().getRoundNumber() / (roundToStart - GameManager.Instance().difficultyMult_Spawn);
+        /// TODO: Create algorithm that offsets multiplier based on round number started at
+        float roundOffsetMult = 1; // GameManager.Instance().getRoundNumber() / (roundToStart * GameManager.Instance().difficultyMult_Spawn);
         spawnDelay /= (GameManager.Instance().difficultyMult_Spawn * roundOffsetMult);
 
         CreateLine();

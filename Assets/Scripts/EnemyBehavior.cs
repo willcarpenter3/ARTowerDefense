@@ -62,10 +62,11 @@ public class EnemyBehavior : MonoBehaviour
         mainCollider = GetComponent<Collider>();
         //mainRigidBody = GetComponent<Rigidbody>();
 
-        float roundOffsetMult_Health = GameManager.Instance().getRoundNumber() / (roundToStart - GameManager.Instance().difficultyMult_Health);
-        health *= GameManager.Instance().difficultyMult_Health * roundOffsetMult_Health;
-        float roundOffsetMult_Speed = GameManager.Instance().getRoundNumber() / (roundToStart - GameManager.Instance().difficultyMult_Speed);
-        speed *= GameManager.Instance().difficultyMult_Speed * roundOffsetMult_Speed;
+        /// TODO: Create algorithm that offsets multiplier based on round number started at
+        float roundOffsetMult_Health = 1; // (GameManager.Instance().getRoundNumber() / (roundToStart * GameManager.Instance().difficultyMult_Health));
+        health *= (GameManager.Instance().difficultyMult_Health * roundOffsetMult_Health);
+        float roundOffsetMult_Speed = 1; // (GameManager.Instance().getRoundNumber() / (roundToStart * GameManager.Instance().difficultyMult_Speed));
+        speed *= (GameManager.Instance().difficultyMult_Speed * roundOffsetMult_Speed);
 
         allColliders = gameObject.transform.GetChild(0).GetComponentsInChildren<Collider>(true);
         allRigidBodies = gameObject.transform.GetChild(0).GetComponentsInChildren<Rigidbody>(true);

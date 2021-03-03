@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     public float difficultyMult_Speed = 1;
 
-    private const float difficultyMult_Speed_INCREASE = 0.05f;
+    private const float difficultyMult_Speed_INCREASE = 0.1f;
 
     public float difficultyMult_Health = 1;
 
