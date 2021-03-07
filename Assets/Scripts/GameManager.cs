@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     public int numCredits;
 
-    private int roundAllowanceMultiplier = 1;
+    private int roundAllowanceMultiplier = 5;
 
     private GameObject currentSelectedEffect;
 
@@ -44,8 +44,20 @@ public class GameManager : MonoBehaviour
 
     public int enemiesThisRound;
 
+    public float difficultyMult_Speed = 1;
+
+    private const float difficultyMult_Speed_INCREASE = 0.1f;
+
+    public float difficultyMult_Health = 1;
+
+    private const float difficultyMult_Health_INCREASE = 0.1f;
+
+    public float difficultyMult_Spawn = 1;
+
+    private const float difficultyMult_Spawn_INCREASE = 0.08f;
+
     //Singleton Game Manager Logic
-    public static GameManager instance;
+    private static GameManager instance;
 
     public static GameManager Instance()
     {
@@ -110,6 +122,8 @@ public class GameManager : MonoBehaviour
             {
                 //Advance to the next round
                 roundNumber++;
+                //Increase difficulty
+                increaseDifficulty();
                 //Reset Spawners
                 foreach (EnemySpawner spawn in spawners)
                 {
@@ -230,6 +244,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Adding " + spawn.getNumEnemies() + "from spawner");
             enemiesThisRound += spawn.getNumEnemies(); 
         }
+
+        if (enemiesThisRound == 0)
+        {
+            //checkWin();
+        }
     }
 
     private void hideWaypoints()
@@ -266,7 +285,7 @@ public class GameManager : MonoBehaviour
     public void addAllowanceRound()
     {
         //numCredits += spawners.Count * 10;
-        numCredits += (roundNumber - 1) * 10;
+        numCredits += (roundNumber - 1) * roundAllowanceMultiplier;
     }
 
     public void addAllowanceFirstRound()
@@ -277,5 +296,12 @@ public class GameManager : MonoBehaviour
     public void spendCredits(int cost)
     {
         numCredits -= cost;
+    }
+
+    public void increaseDifficulty()
+    {
+        difficultyMult_Speed += difficultyMult_Speed_INCREASE;
+        difficultyMult_Health += difficultyMult_Health_INCREASE;
+        difficultyMult_Spawn += difficultyMult_Spawn_INCREASE;
     }
 }

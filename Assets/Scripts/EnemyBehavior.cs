@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     
     public EnemyType enemyType; //Type of this enemy
 
-    public int health = 100; //Health of this enemy unit
+    public float health = 100; //Health of this enemy unit
 
     private bool dead = false; //used to prevent ragdolling several times
 
@@ -54,11 +54,20 @@ public class EnemyBehavior : MonoBehaviour
 
     private Rigidbody[] allRigidBodies;
 
+    [HideInInspector]
+    public float roundToStart;
+
     private void Start()
     {
         mainCollider = GetComponent<Collider>();
         //mainRigidBody = GetComponent<Rigidbody>();
-        
+
+        /// TODO: Create algorithm that offsets multiplier based on round number started at
+        float roundOffsetMult_Health = 1; // (GameManager.Instance().getRoundNumber() / (roundToStart * GameManager.Instance().difficultyMult_Health));
+        health *= (GameManager.Instance().difficultyMult_Health * roundOffsetMult_Health);
+        float roundOffsetMult_Speed = 1; // (GameManager.Instance().getRoundNumber() / (roundToStart * GameManager.Instance().difficultyMult_Speed));
+        speed *= (GameManager.Instance().difficultyMult_Speed * roundOffsetMult_Speed);
+
         allColliders = gameObject.transform.GetChild(0).GetComponentsInChildren<Collider>(true);
         allRigidBodies = gameObject.transform.GetChild(0).GetComponentsInChildren<Rigidbody>(true);
 

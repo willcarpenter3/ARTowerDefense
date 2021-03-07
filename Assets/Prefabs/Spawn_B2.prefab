@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesToSpawn: 1
-  roundToStart: 2
+  roundToStart: 5
   startDelay: 1
   spawnDelay: 2
   enemyPrefab: {fileID: 8837127971661353273, guid: 14c709a18bb7fc0459b4bb5652901f0e, type: 3}
