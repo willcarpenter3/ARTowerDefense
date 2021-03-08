@@ -27,4 +27,9 @@ public class UIBehaviors : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void EnterEndlessMode()
+    {
+        GameManager.Instance().enterEndlessMode();
+    }
 }

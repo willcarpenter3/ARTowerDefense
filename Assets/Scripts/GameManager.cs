@@ -304,4 +304,22 @@ public class GameManager : MonoBehaviour
         difficultyMult_Health += difficultyMult_Health_INCREASE;
         difficultyMult_Spawn += difficultyMult_Spawn_INCREASE;
     }
+
+    public void enterEndlessMode()
+    {
+        confirmButton.SetActive(true);
+        winPanel.SetActive(false);
+
+        //Advance to the next round
+        roundNumber++;
+        //Increase difficulty
+        increaseDifficulty();
+        //Reset Spawners
+        foreach (EnemySpawner spawn in spawners)
+        {
+            spawn.ResetSpawner();
+        }
+        nextPhase();
+        roundTxt.text = "Round " + roundNumber;
+    }
 }
