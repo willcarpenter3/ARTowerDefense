@@ -420,6 +420,7 @@ MonoBehaviour:
   currentIndex: 0
   shockParticle: {fileID: 1337937998198740053, guid: 13732c24bc9b2ba41ab11d8142714bde, type: 3}
   target: {fileID: 270389062900979183}
+  roundToStart: 0
 --- !u!54 &5986359070466660492
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -536,7 +537,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.009737912, y: 0.0051367814, z: -0.017209226}
+  m_ConnectedAnchor: {x: -0.0097379135, y: 0.0051367814, z: -0.017209228}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -686,7 +687,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.007210876, y: 0.0063128415, z: -0.018039241}
+  m_ConnectedAnchor: {x: 0.0072108763, y: 0.0063128415, z: -0.018039243}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -789,7 +790,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0.022351053, z: 0}
+  m_ConnectedAnchor: {x: -8.077936e-28, y: 0.022351054, z: 0}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -863,7 +864,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.637979e-12, y: 0.010029579, z: 0.000002523477}
+  m_ConnectedAnchor: {x: -7.275958e-12, y: 0.010029582, z: 0.0000025238262}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -938,7 +939,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0059029185, y: -0.001996502, z: 0.0011179257}
+  m_ConnectedAnchor: {x: -0.0059029185, y: -0.0019965002, z: 0.001117926}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1013,7 +1014,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -9.313226e-10, y: 0.012352682, z: 9.313226e-10}
+  m_ConnectedAnchor: {x: -6.9849193e-10, y: 0.01235268, z: -0.0000000027939677}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1088,7 +1089,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0071861767, y: -0.0020668842, z: -0.00017154035}
+  m_ConnectedAnchor: {x: 0.0071861767, y: -0.0020668823, z: -0.00017154017}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1163,7 +1164,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000000020954758, y: 0.012182134, z: 3.4924602e-10}
+  m_ConnectedAnchor: {x: 0.0000000023283064, y: 0.012182136, z: 0.0000000019790607}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -1368,15 +1369,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.025
+      value: 0.045
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.025
+      value: 0.045
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.025
+      value: 0.045
       objectReference: {fileID: 0}
     - target: {fileID: 645235578517526439, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1397,6 +1398,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_TagString
       value: follow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659718631228619314, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8879528566716807029, guid: 0517964a7111b434a8e41c301908ad0b, type: 3}
       propertyPath: m_LocalPosition.y

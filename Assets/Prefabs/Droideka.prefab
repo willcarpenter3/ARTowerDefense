@@ -372,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 632998893596962949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 1099551617171523827}
   - {fileID: 7670045069612788410}
@@ -401,6 +401,7 @@ MonoBehaviour:
   currentIndex: 0
   shockParticle: {fileID: 1337937998198740053, guid: 13732c24bc9b2ba41ab11d8142714bde, type: 3}
   target: {fileID: 7670045069612788410}
+  roundToStart: 0
 --- !u!95 &632998893596962951
 Animator:
   serializedVersion: 3

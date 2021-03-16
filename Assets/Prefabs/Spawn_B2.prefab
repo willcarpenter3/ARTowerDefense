@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2921264126324328830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesToSpawn: 1
-  roundToStart: 5
+  roundToStart: 4
   startDelay: 1
   spawnDelay: 2
   enemyPrefab: {fileID: 8837127971661353273, guid: 14c709a18bb7fc0459b4bb5652901f0e, type: 3}

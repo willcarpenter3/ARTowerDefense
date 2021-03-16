@@ -1404,7 +1404,7 @@ Transform:
   m_GameObject: {fileID: 8837127971661353273}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0005, y: 0.0005, z: 0.0005}
+  m_LocalScale: {x: 0.0008, y: 0.0008, z: 0.0008}
   m_Children:
   - {fileID: 3519466472220244889}
   - {fileID: 4287723214942191750}
@@ -1484,6 +1484,7 @@ MonoBehaviour:
   currentIndex: 0
   shockParticle: {fileID: 1337937998198740053, guid: 13732c24bc9b2ba41ab11d8142714bde, type: 3}
   target: {fileID: 566380451688395560}
+  roundToStart: 0
 --- !u!1 &8943605052086564332
 GameObject:
   m_ObjectHideFlags: 0

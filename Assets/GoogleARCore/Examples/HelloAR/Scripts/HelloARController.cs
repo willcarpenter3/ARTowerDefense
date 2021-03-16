@@ -249,6 +249,7 @@ namespace GoogleARCore.Examples.HelloAR
                     GameObject planeObject = Instantiate(PlaneGenerator.DetectedPlanePrefab, Vector3.zero, Quaternion.identity, transform);
                     planeObject.GetComponent<DetectedPlaneVisualizer>().Initialize(_usablePlane);
                     planeObject.GetComponent<DetectedPlaneVisualizer>().ChangeColor(Color.green);
+                    planeObject.GetComponent<MeshRenderer>().enabled = false;
                     ObjectsMenu.SetActive(true);
 
                     if (DepthMenu != null)

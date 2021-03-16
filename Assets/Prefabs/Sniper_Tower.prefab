@@ -4880,7 +4880,7 @@ MonoBehaviour:
   aoeRadius: 10
   aoeDamage: 5
   shockTime: 2
-  shockSpeed: 0
+  shockMultiplier: 0
   animator: {fileID: 1807806614995202080}
 --- !u!114 &-6740312003358744025
 MonoBehaviour:
@@ -5173,15 +5173,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46fb2f79ac9cef2458899c2319665ca5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.3
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46fb2f79ac9cef2458899c2319665ca5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.3
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46fb2f79ac9cef2458899c2319665ca5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 46fb2f79ac9cef2458899c2319665ca5, type: 3}
       propertyPath: m_Name
