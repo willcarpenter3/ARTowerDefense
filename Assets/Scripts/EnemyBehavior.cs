@@ -64,7 +64,8 @@ public class EnemyBehavior : MonoBehaviour
 
         /// TODO: Create algorithm that offsets multiplier based on round number started at
         float roundOffsetMult_Health = 1; // (GameManager.Instance().getRoundNumber() / (roundToStart * GameManager.Instance().difficultyMult_Health));
-        health *= (GameManager.Instance().difficultyMult_Health * roundOffsetMult_Health);
+        if (GameManager.Instance() != null)
+            health *= (GameManager.Instance().difficultyMult_Health * roundOffsetMult_Health);
         float roundOffsetMult_Speed = 1; // (GameManager.Instance().getRoundNumber() / (roundToStart * GameManager.Instance().difficultyMult_Speed));
         //speed *= (GameManager.Instance().difficultyMult_Speed * roundOffsetMult_Speed);
 
